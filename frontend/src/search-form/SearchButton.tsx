@@ -19,7 +19,6 @@ class SearchButton extends Component<any, any> {
                     onClick={this.onClickHandler}
                     className='searchButton'
                 />
-
             </div>
         )
     }

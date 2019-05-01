@@ -7,13 +7,7 @@ class DurationOfStay extends Component<any, any> {
     constructor(props: any) {
         super(props)
 
-        this.state = {
-            durationOfStay: 1
-        }
-
         this.durationItems = this.createDurationItems(25)
-
-        this.durationOfStayHandler = this.durationOfStayHandler.bind(this)
     }
 
     createDurationItems(length: number): Array<number> {
@@ -26,13 +20,6 @@ class DurationOfStay extends Component<any, any> {
         return result;
     }
 
-    durationOfStayHandler(event: any) {
-        this.setState({
-            durationOfStay: event.target.value
-        })
-
-    }
-
     render() {
         return (
             <div className='durationOfStay'>
@@ -40,7 +27,7 @@ class DurationOfStay extends Component<any, any> {
                     label='Duration of stay (nights)'
                     name='durationOfStay'
                     items={this.durationItems}
-                    selectionHandler={this.durationOfStayHandler}
+                    selectionHandler={this.props.stayDurationHandler}
                 />
             </div>
         )

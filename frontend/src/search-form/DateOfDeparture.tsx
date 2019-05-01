@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import Calendar from 'react-calendar'
 
-class DateOfDuration extends Component<any, any> {
+class DateOfDeparture extends Component<any, any> {
     constructor(props: any) {
         super(props)
     }
 
     render() {
         return (
-            <div className='dateOfDuration'>
+            <div className='dateOfDeparture'>
                 <Calendar
                     value={this.props.value}
                     onChange={this.props.dateHandler}
@@ -18,4 +18,4 @@ class DateOfDuration extends Component<any, any> {
     }
 }
 
-export default DateOfDuration
+export default DateOfDeparture

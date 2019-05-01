@@ -5,18 +5,6 @@ class PlaceOfDeparture extends Component<any, any> {
     private static readonly DEPARTURE_PLACES: Array<string> = ['none', 'Kiev', 'Lviv', 'Dnipro']
     constructor(props: any) {
         super(props)
-
-        this.state = {
-            placeOfDeparture: ''
-        }
-
-        this.selectDeparturePlaceHandler = this.selectDeparturePlaceHandler.bind(this)
-    }
-
-    selectDeparturePlaceHandler(event: any) {
-        this.setState({
-            placeOfDeparture: event.target.value
-        })
     }
 
     render() {
@@ -26,7 +14,7 @@ class PlaceOfDeparture extends Component<any, any> {
                     label='Select place of departure'
                     name='placeOfDeparture'
                     items={PlaceOfDeparture.DEPARTURE_PLACES}
-                    selectionHandler={this.selectDeparturePlaceHandler}
+                    selectionHandler={this.props.departurePlaceHandler}
                 />
             </div>
         )
