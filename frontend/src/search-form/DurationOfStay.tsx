@@ -34,8 +34,6 @@ class DurationOfStay extends Component<any, any> {
     }
 
     render() {
-
-        console.log("==>>>", this.state.durationOfStay)
         return (
             <div className='durationOfStay'>
                 <SelectList
