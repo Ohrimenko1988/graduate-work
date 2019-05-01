@@ -18,7 +18,7 @@ class Resorts extends Component<any, any> {
         })
 
         return (
-            <div className='resorts'>
+            <div>
                 {resortsCheckboxes}
             </div>
         )

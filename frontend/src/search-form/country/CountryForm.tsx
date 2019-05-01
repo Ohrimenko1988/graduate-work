@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import GreeceResorts from './resort/GreeceResorts';
 import EgyptResorts from './resort/EgyptResorts';
 import ItalyResorts from './resort/ItalyResorts';
+import SelectList from '../common/SelectList';
 
 class CountryForm extends Component<any, any> {
     private enabledResorts: Set<string> = new Set()
+    private static readonly COUNTRIES: Array<string> = ['none', 'Greece', 'Egypt', 'Italy']
 
     constructor(props: any) {
         super(props);
@@ -58,21 +60,17 @@ class CountryForm extends Component<any, any> {
 
         return (
             <div className='countryForm'>
-
                 <div className='countries'>
-                    <label>Select Country</label>
-                    <select name="countries" onChange={this.selectCountryHandler}>
-                        <option className='country' value="none">none</option>
-                        <option className='country' value="Greece">Greece</option>
-                        <option className='country' value="Egypt">Egypt</option>
-                        <option className='country' value="Italy">Italy</option>
-                    </select>
+                    <SelectList
+                        label='Select country'
+                        name='countries'
+                        items={CountryForm.COUNTRIES}
+                        selectionHandler={this.selectCountryHandler}
+                    />
                 </div>
-                <div>
+                <div className='resorts'>
                     {resorts}
                 </div>
-
-
             </div>
         )
     }

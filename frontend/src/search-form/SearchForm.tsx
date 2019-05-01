@@ -7,6 +7,7 @@ class SearchForm extends Component {
             <form action="">
                 <div className='searchForm'>
                     <CountryForm />
+                    
                 </div>
             </form>
 
