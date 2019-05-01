@@ -14,6 +14,7 @@ class SearchForm extends Component<any, any> {
 
         this.state = {
             country: 'none',
+            resorts: [],
             dateOfDeparture: new Date(),
             placeOfDeparture: 'none',
             durationOfStay: 1,
@@ -38,18 +39,16 @@ class SearchForm extends Component<any, any> {
         console.log("=====================================")
         console.log(this.state)
         console.log("=====================================")
-        console.log(this.enabledResorts)
-        console.log("=====================================")
 
     }
 
-    adultsCapacityHandler(event:any){
+    adultsCapacityHandler(event: any) {
         this.setState({
             adultsCapacity: event.target.value
         })
     }
 
-    childrenCapacityHandler(event: any){
+    childrenCapacityHandler(event: any) {
         this.setState({
             childrenCapacity: event.target.value
         })
@@ -79,16 +78,24 @@ class SearchForm extends Component<any, any> {
 
         if (this.enabledResorts.has(resortName)) {
             this.enabledResorts.delete(resortName)
+            this.setState({
+                resorts: this.enabledResorts
+            })
+
             return
         }
 
         this.enabledResorts.add(resortName)
+        this.setState({
+            resorts: this.enabledResorts
+        })
     }
 
     selectCountryHandler = (event: any) => {
         this.enabledResorts = new Set()
         this.setState({
-            country: event.target.value
+            country: event.target.value,
+            resorts: this.enabledResorts
         })
     }
 
@@ -103,7 +110,7 @@ class SearchForm extends Component<any, any> {
                     />
                     <PlaceOfDeparture departurePlaceHandler={this.departurePlaceHandler} />
                     <DurationOfStay stayDurationHandler={this.stayDurationHandler} />
-                    <PeoplesCapacity adultsCapacityHandler={this.adultsCapacityHandler} childrenCapacityHandler={this.childrenCapacityHandler}/>
+                    <PeoplesCapacity adultsCapacityHandler={this.adultsCapacityHandler} childrenCapacityHandler={this.childrenCapacityHandler} />
                     <DateOfDeparture value={this.state.dateOfDeparture} dateHandler={this.dateHandler} />
                     <SearchButton />
                 </div>
