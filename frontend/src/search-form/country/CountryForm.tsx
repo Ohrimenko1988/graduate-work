@@ -1,90 +1,77 @@
 import React, { Component } from 'react'
-import Checkbox from '../common/Checkbox';
-import { string } from 'prop-types';
-import { directive } from '@babel/types';
-import Resorts from './resort/Resorts';
 import GreeceResorts from './resort/GreeceResorts';
+import EgyptResorts from './resort/EgyptResorts';
+import ItalyResorts from './resort/ItalyResorts';
 
 class CountryForm extends Component<any, any> {
-    private enabledCountry: Set<string> = new Set()
     private enabledResorts: Set<string> = new Set()
-
-    private greeceResorts: Array<string> = ['Korfu', 'Krit', 'Rodos']
 
     constructor(props: any) {
         super(props);
 
         this.state = {
-            resorts: []
+            country: 'none'
         }
 
-        this.toggleCountryCheckbox = this.toggleCountryCheckbox.bind(this);
         this.toggleResortCheckbox = this.toggleResortCheckbox.bind(this);
-        this.selectionHandler = this.selectionHandler.bind(this);
+        this.selectCountryHandler = this.selectCountryHandler.bind(this);
     }
 
-    toggleCountryCheckbox = (name: string) => {
-        if (this.enabledCountry.has(name)) {
-            this.enabledCountry.delete(name)
+    toggleResortCheckbox = (event: any) => {
+        const resortName: string = event.target.value
 
-            console.log("====>>>>", this.enabledCountry)
-        } else {
-            this.enabledCountry.add(name)
-            console.log("====>>>>", this.enabledCountry)
+        if (this.enabledResorts.has(resortName)) {
+            this.enabledResorts.delete(resortName)
+            return
         }
 
+        this.enabledResorts.add(resortName)
     }
 
-    toggleResortCheckbox = (name: string) => {
-        if (this.enabledResorts.has(name)) {
-            this.enabledResorts.delete(name)
-
-            console.log("====>>>>", this.enabledResorts)
-        } else {
-            this.enabledResorts.add(name)
-            console.log("====>>>>", this.enabledResorts)
-        }
-
-    }
-
-    selectionHandler = (event: any) => {
-        console.log("==>>>", event.target.value)
-
-        if (event.target.value === 'Greece') {
-            this.setState({
-                resorts: this.greeceResorts
-            })
-        }
+    selectCountryHandler = (event: any) => {
+        this.enabledResorts = new Set()
+        this.setState({
+            country: event.target.value
+        })
 
 
     }
-
-    resortsHandler(event: any){
-        console.log("==>>>", event.target.name)
-    }
-
 
     render() {
+        let resorts;
+
+        if (this.state.country === 'none') {
+            resorts = '';
+        }
+
+        if (this.state.country === 'Greece') {
+            resorts = <GreeceResorts changeHandler={this.toggleResortCheckbox} />;
+        }
+
+        if (this.state.country === 'Egypt') {
+            resorts = <EgyptResorts changeHandler={this.toggleResortCheckbox} />;
+        }
+
+        if (this.state.country === 'Italy') {
+            resorts = <ItalyResorts changeHandler={this.toggleResortCheckbox} />;
+        }
 
         return (
             <div className='countryForm'>
 
                 <div className='countries'>
                     <label>Select Country</label>
-                    <select name="countries" onChange={this.selectionHandler}>
+                    <select name="countries" onChange={this.selectCountryHandler}>
                         <option className='country' value="none">none</option>
                         <option className='country' value="Greece">Greece</option>
                         <option className='country' value="Egypt">Egypt</option>
                         <option className='country' value="Italy">Italy</option>
                     </select>
                 </div>
+                <div>
+                    {resorts}
+                </div>
 
-                <GreeceResorts changeHandler={this.resortsHandler}/>
-
-
-                {/* <div className='resorts'>
-                    {resortsList}
-                </div> */}
 
             </div>
         )

@@ -12,8 +12,9 @@ class Checkbox extends Component<any, any> {
                 <input
                     type="checkbox"
                     key={this.props.key}
+                    value={name}
                     defaultChecked={this.props.defaultChecked}
-                    onChange={() => this.props.changeHandler(name)}>
+                    onChange={this.props.changeHandler}>
                 </input>
                 <label>{name}</label>
             </div>

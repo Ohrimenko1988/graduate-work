@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Resorts from './Resorts';
 
-class GreeceResorts extends Component<any, any> {
-    private static readonly RESORTS: Array<string> = ['Korfu', 'Krit', 'Rodos'];
+class ItalyResorts extends Component <any, any> {
+    private static readonly RESORTS: Array<string> = ['Venice', 'Rome', 'Florence'];
     private static readonly DEFAULT_CHECKED: boolean = false;
 
     constructor(props: any) {
@@ -12,12 +12,12 @@ class GreeceResorts extends Component<any, any> {
     render() {
         return (
             <Resorts
-                resorts={GreeceResorts.RESORTS}
-                defaultChecked={GreeceResorts.DEFAULT_CHECKED}
+                resorts={ItalyResorts.RESORTS}
+                defaultChecked={ItalyResorts.DEFAULT_CHECKED}
                 changeHandler={this.props.changeHandler}
             />
         )
     }
 }
 
-export default GreeceResorts
+export default ItalyResorts
