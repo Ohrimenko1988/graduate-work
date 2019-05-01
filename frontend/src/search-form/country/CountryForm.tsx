@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import GreeceResorts from './resort/GreeceResorts';
 import EgyptResorts from './resort/EgyptResorts';
 import ItalyResorts from './resort/ItalyResorts';
-import SelectList from '../common/SelectList';
+import SelectList from '../../common/SelectList';
 
 class CountryForm extends Component<any, any> {
     private enabledResorts: Set<string> = new Set()
