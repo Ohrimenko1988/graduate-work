@@ -14,6 +14,7 @@ class SearchForm extends Component<any, any> {
 
         this.state = {
             country: 'none',
+            date: new Date()
 
 
         }
@@ -21,12 +22,20 @@ class SearchForm extends Component<any, any> {
         this.onSubmitHandler = this.onSubmitHandler.bind(this)
         this.toggleResortCheckbox = this.toggleResortCheckbox.bind(this);
         this.selectCountryHandler = this.selectCountryHandler.bind(this);
+        this.dateHandler = this.dateHandler.bind(this)
+
     }
 
     onSubmitHandler(event: any) {
         event.preventDefault()
     }
 
+    dateHandler(date: any) {
+        console.log("==>>>", date)
+        this.setState({
+            date
+        })
+    }
 
     toggleResortCheckbox = (event: any) => {
         const resortName: string = event.target.value
@@ -64,7 +73,7 @@ class SearchForm extends Component<any, any> {
                     <PlaceOfDeparture />
                     <DurationOfStay />
                     <PeoplesCapacity />
-                    <DateOfDuration />
+                    <DateOfDuration value={this.state.date} dateHandler={this.dateHandler} />
                     <SearchButton />
                 </div>
             </form>

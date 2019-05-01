@@ -4,27 +4,14 @@ import Calendar from 'react-calendar'
 class DateOfDuration extends Component<any, any> {
     constructor(props: any) {
         super(props)
-
-        this.state = {
-            date: new Date
-        }
-
-        this.dateHandler = this.dateHandler.bind(this)
-    }
-
-    dateHandler(date: any) {
-        console.log("==>>>", date)
-        this.setState({
-            date
-        })
     }
 
     render() {
         return (
             <div className='dateOfDuration'>
                 <Calendar
-                    value={this.state.date}
-                    onChange={this.dateHandler}
+                    value={this.props.value}
+                    onChange={this.props.dateHandler}
                 />
             </div>
         )
