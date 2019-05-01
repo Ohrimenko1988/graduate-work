@@ -115,7 +115,6 @@ class SearchForm extends Component<any, any> {
                     <SearchButton />
                 </div>
             </form>
-
         )
     }
 }
