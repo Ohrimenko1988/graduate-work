@@ -22,7 +22,7 @@ class AdultsCapacity extends Component<any, any> {
 
     render() {
         return (
-            <div className='adultsCapacity'>
+            <div className='adults-capacity'>
                 <SelectList
                     label='Select adults'
                     name='adultsCapacity'

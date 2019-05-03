@@ -9,10 +9,12 @@ class PeoplesCapacity extends Component<any, any> {
 
     render() {
         return (
-            <div className='peoplesCapacity'>
+            <div className={this.props.className}>
                 <label>Select peoples capacity</label>
-                <AdultsCapacity selectionHandler={this.props.adultsCapacityHandler} />
-                <ChildrenCapacity selectionHandler={this.props.childrenCapacityHandler} />
+                <div className='capacity-selectors'>
+                    <AdultsCapacity selectionHandler={this.props.adultsCapacityHandler} />
+                    <ChildrenCapacity selectionHandler={this.props.childrenCapacityHandler} />
+                </div>
             </div>
         )
     }

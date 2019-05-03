@@ -1,0 +1,16 @@
+.search-form-arrea {
+    background-image: url("http://static.asiawebdirect.com/m/bangkok/portals/bali-indonesia-com/homepage/beach-resort/pagePropertiesImage/best-bali-beach-resorts.jpg.jpg");
+    background-size: 100% 100%;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.search-form-item {
+    margin: 5px;
+    padding: 5px;
+    background: yellow;
+}

@@ -102,17 +102,37 @@ class SearchForm extends Component<any, any> {
     render() {
         return (
             <form onSubmit={this.onSubmitHandler} >
-                <div className='searchForm'>
+                <div className='search-form'>
                     <CountryForm
                         selectCountryHandler={this.selectCountryHandler}
                         toggleResortHandler={this.toggleResortCheckbox}
                         selectedCountry={this.state.country}
+                        className='country-form search-form-item'
                     />
-                    <PlaceOfDeparture departurePlaceHandler={this.departurePlaceHandler} />
-                    <DurationOfStay stayDurationHandler={this.stayDurationHandler} />
-                    <PeoplesCapacity adultsCapacityHandler={this.adultsCapacityHandler} childrenCapacityHandler={this.childrenCapacityHandler} />
-                    <DateOfDeparture value={this.state.dateOfDeparture} dateHandler={this.dateHandler} />
-                    <SearchButton />
+
+                    <PlaceOfDeparture
+                        departurePlaceHandler={this.departurePlaceHandler}
+                        className='departure-place search-form-item'
+                    />
+
+                    <DurationOfStay
+                        stayDurationHandler={this.stayDurationHandler}
+                        className='stay-duration search-form-item'
+                    />
+
+                    <PeoplesCapacity
+                        adultsCapacityHandler={this.adultsCapacityHandler}
+                        childrenCapacityHandler={this.childrenCapacityHandler}
+                        className='peoples-capacity search-form-item'
+                    />
+
+                    <DateOfDeparture
+                        value={this.state.dateOfDeparture}
+                        dateHandler={this.dateHandler}
+                        className='departure-date search-form-item'
+                    />
+
+                    <SearchButton className='search-button search-form-item' />
                 </div>
             </form>
         )

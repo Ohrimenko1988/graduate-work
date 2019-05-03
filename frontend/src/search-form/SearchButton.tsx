@@ -13,11 +13,11 @@ class SearchButton extends Component<any, any> {
 
     render() {
         return (
-            <div>
+            <div className={this.props.className}>
                 <Button
                     value='Search'
                     onClick={this.onClickHandler}
-                    className='searchButton'
+                    className='search-button'
                 />
             </div>
         )

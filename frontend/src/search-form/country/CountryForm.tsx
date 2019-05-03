@@ -33,7 +33,7 @@ class CountryForm extends Component<any, any> {
         }
 
         return (
-            <div className='countryForm'>
+            <div className={this.props.className}>
                 <div className='countries'>
                     <SelectList
                         label='Select country'

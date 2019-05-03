@@ -1,0 +1,21 @@
+.app-body-arrea{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-page-content {
+    display: flex;
+    flex-direction: row
+}
+
+.main-page-content .left-comercial-arrea {
+    width: 25%;
+}
+
+.main-page-content .content-arrea {
+    width: 50%;
+}
+
+.main-page-content .right-comercial-arrea {
+    width: 25%;
+}

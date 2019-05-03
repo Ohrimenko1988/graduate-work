@@ -22,7 +22,7 @@ class DurationOfStay extends Component<any, any> {
 
     render() {
         return (
-            <div className='durationOfStay'>
+            <div className={this.props.className}>
                 <SelectList
                     label='Duration of stay (nights)'
                     name='durationOfStay'

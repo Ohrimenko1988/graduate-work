@@ -9,7 +9,7 @@ class PlaceOfDeparture extends Component<any, any> {
 
     render() {
         return (
-            <div className='placeOfDeparture'>
+            <div className={this.props.className}>
                 <SelectList
                     label='Select place of departure'
                     name='placeOfDeparture'

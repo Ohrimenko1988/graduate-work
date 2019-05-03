@@ -1,0 +1,33 @@
+.tour-list-item{
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+    background: blue;
+
+}
+
+.item-arrea{
+    margin: 5px;
+    padding: 5px;
+    background: yellow;
+    width: 48%;
+}
+
+.item-arrea-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.tour-list-item .description{
+    display: flex;
+    flex-direction: row;
+}
+
+.tour-list-item .details{
+    margin: 5px;
+    padding: 5px;
+}
+
+.description{
+    justify-content: space-between;
+}

@@ -1,0 +1,41 @@
+.app-body-arrea {
+    display: flex;
+    flex-direction: column;
+}
+
+.arrea-item {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid blue;
+    margin: 5px;
+    padding: 5px;
+    justify-content: center;
+}
+
+.content-item {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    margin: 5px;
+    padding: 5px;
+    justify-content: center;
+}
+
+.left-comercial-arrea {
+    width: 10%;
+}
+
+.filter-arrea {
+    width: 20%;
+}
+
+.content-arrea {
+    width: 50%;
+}
+
+.right-comercial-arrea {
+    width: 10%;
+}
+
+
+

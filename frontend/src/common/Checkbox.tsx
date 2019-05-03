@@ -8,7 +8,7 @@ class Checkbox extends Component<any, any> {
     render() {
         const name: string = this.props.name;
         return (
-            <div className='checkBox'>
+            <div className='checkbox'>
                 <input
                     type="checkbox"
                     key={this.props.key}

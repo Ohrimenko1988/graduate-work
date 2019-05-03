@@ -8,7 +8,7 @@ class DateOfDeparture extends Component<any, any> {
 
     render() {
         return (
-            <div className='dateOfDeparture'>
+            <div className={this.props.className}>
                 <Calendar
                     value={this.props.value}
                     onChange={this.props.dateHandler}

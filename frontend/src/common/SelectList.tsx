@@ -13,7 +13,7 @@ class SelectList extends Component<any, any> {
 
     render() {
         return (
-            <div className='selectionList'>
+            <div className='selection-list'>
                 <label>{this.props.label}</label>
                     <select name={this.props.name} onChange={this.props.selectionHandler}>
                         {this.createListItems(this.props.items)}

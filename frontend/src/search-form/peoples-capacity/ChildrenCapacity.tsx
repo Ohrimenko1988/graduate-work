@@ -22,7 +22,7 @@ class ChildrenCapacity extends Component<any, any> {
 
     render() {
         return (
-            <div className='childrenCapacity'>
+            <div className='children-capacity'>
                 <SelectList
                     label='Select children'
                     name='childrenCapacity'
