@@ -1,25 +1,28 @@
 import React, { Component } from 'react'
+import { directive } from '@babel/types';
 
-class Checkbox extends Component<any, any> {
-    constructor(props: any) {
-        super(props)
-    }
+export interface CheckboxProps {
+    name: string;
+    key: string;
+    defaultChecked: boolean;
+    onChangeHandler: any;
+}
 
-    render() {
-        const name: string = this.props.name;
+const Checkbox: React.FC<CheckboxProps> = (props: CheckboxProps)=>{
         return (
             <div className='checkbox'>
-                <input
-                    type="checkbox"
-                    key={this.props.key}
-                    value={name}
-                    defaultChecked={this.props.defaultChecked}
-                    onChange={this.props.changeHandler}>
-                </input>
-                <label>{name}</label>
+                <div className='title'>{props.name}</div>
+                <div className='checkbox-button'>
+                    <input
+                        type="checkbox"
+                        key={props.key}
+                        value={props.name}
+                        defaultChecked={props.defaultChecked}
+                        onChange={props.onChangeHandler}>
+                    </input>
+                </div>
             </div>
         )
-    }
 }
 
 export default Checkbox

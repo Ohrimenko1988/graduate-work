@@ -13,7 +13,7 @@ class Resorts extends Component<any, any> {
                 name={resort}
                 key={resort}
                 defaultChecked={this.props.defaultChecked}
-                changeHandler={this.props.changeHandler}
+                onChangeHandler={this.props.changeHandler}
             />
         })
 

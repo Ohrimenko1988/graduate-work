@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchForm from './search-form/SearchForm';
-import TourListItem, { TourListItemProps } from './common/TourListItem';
+import TourListItem, { TourListItemProps } from './search-form/TourListItem';
 
 const App: React.FC = () => {
 
