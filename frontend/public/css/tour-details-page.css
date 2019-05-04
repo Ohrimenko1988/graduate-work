@@ -1,0 +1,54 @@
+/* Page markup */
+
+.tour-details-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.tour-details-page .arrea-item {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid blue;
+    justify-content: center;
+}
+
+/* Content part markup */
+
+.tour-details-page .main-content .content-item {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    margin: 5px;
+    padding: 5px;
+}
+
+.tour-details-page .left-comercial-side {
+    display: flex;
+    flex-direction: row;
+    width: 15%;
+}
+
+.tour-details-page .content-arrea {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.tour-details-page .right-comercial-side {
+    display: flex;
+    flex-direction: row;
+    width: 15%;
+}
+
+.tour-details-page .content-arrea-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px;
+    padding: 5px;
+}
+
+.tour-details-page .content-arrea-item {
+    border: 2px solid green;
+    width: 48%;
+}

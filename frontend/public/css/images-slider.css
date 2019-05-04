@@ -1,0 +1,19 @@
+.image-slider{
+    width: 100%;
+}
+
+.image-slider .navigation-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.image-slider .navigation-container .navigation-button{
+    width: 30%;
+}
+
+.image-slider .images-counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
