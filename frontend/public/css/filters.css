@@ -1,3 +1,5 @@
+/* filter form markup */
+
 .filter-arrea {
     display: flex;
     flex-direction: column;
@@ -10,6 +12,8 @@
     justify-content: space-between;
 }
 
+/* hotel category arrea */
+
 .hotel-category {
     width: 100%;
 }
@@ -20,6 +24,8 @@
     justify-content: space-between;
 }
 
+/* accommodation arrea */
+
 .accommodation {
     width: 100%;
 }
@@ -28,6 +34,45 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+/* price arrea */
+
+.price-range{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.price-arrea{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.price-arrea-item{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin: 1%;
+    padding: 1%;
+}
+
+/* service arrea */
+
+.services-arrea{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.services-arrea .checkbox {
+    display: flex;
+    flex-direction: row;
+}
+
+.services-arrea .checkbox .title {
+    order: 2;
 }
 
 
