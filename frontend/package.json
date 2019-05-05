@@ -34,6 +34,8 @@
     ]
   },
   "devDependencies": {
-    "react-calendar": "^2.18.1"
+    "axios": "^0.18.0",
+    "react-calendar": "^2.18.1",
+    "typed-rest-client": "^1.2.0"
   }
 }
