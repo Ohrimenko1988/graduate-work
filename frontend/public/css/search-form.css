@@ -1,5 +1,13 @@
-.search-form-arrea {
+/* .search-form-arrea {
     background-image: url("http://static.asiawebdirect.com/m/bangkok/portals/bali-indonesia-com/homepage/beach-resort/pagePropertiesImage/best-bali-beach-resorts.jpg.jpg");
+    background-size: 100% 100%;
+} */
+.form-search-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    background-image: url("https://www.berjayahotel.com/sites/default/files/hotel-home/langkawi/london-header-058.jpg");
     background-size: 100% 100%;
 }
 
@@ -9,8 +17,17 @@
     justify-content: center;
 }
 
-.search-form-item {
+.search-form .search-form-item {
+    display: flex;
+    flex-direction: column;
     margin: 5px;
     padding: 5px;
+    border: 2px solid blue;
     background: yellow;
+    align-self: flex-start;
+}
+
+.search-form-item .departure-date .react-calendar{
+    /* width: 50px;
+    height: 50px; */
 }

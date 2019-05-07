@@ -1,5 +1,6 @@
-import { IHotTour } from "./IHotTour";
+import { ITour } from "./ITour";
 
 export interface IOperator {
-    getHotTours(): IHotTour[];
+    getHotTours(): Promise<ITour[]>;
+    searchTours(): Promise<ITour[]>;
 }

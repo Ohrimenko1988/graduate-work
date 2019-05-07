@@ -18,21 +18,21 @@ const tourListItemProps: TourListItemProps = {
     adultsCapacity: 2,
     childrenCapacity: 0,
     price: 'Price'
-  }
+}
 
-function generateItemsList(): TourListItemProps[]{
+function generateItemsList(): TourListItemProps[] {
     let result: TourListItemProps[] = new Array()
 
-    for(let i = 0; i < 5; i++){
+    for (let i = 0; i < 5; i++) {
         result.push(tourListItemProps)
     }
 
     return result;
 }
 
-// ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(<ResultPage tours={generateItemsList()}/>, document.getElementById('root'));
-ReactDOM.render(<TourDetailsPage/>, document.getElementById('root'));
+// ReactDOM.render(<TourDetailsPage/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -101,7 +101,7 @@ class SearchForm extends Component<any, any> {
 
     render() {
         return (
-            <form onSubmit={this.onSubmitHandler} >
+            <form className='form-search-form' onSubmit={this.onSubmitHandler} >
                 <div className='search-form'>
                     <CountryForm
                         selectCountryHandler={this.selectCountryHandler}

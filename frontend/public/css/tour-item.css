@@ -18,6 +18,11 @@
     flex-direction: column;
 }
 
+.tour-list-item .image-container img{
+    width: 100%;
+    height: 100%;    
+}
+
 .tour-list-item .description{
     display: flex;
     flex-direction: row;
