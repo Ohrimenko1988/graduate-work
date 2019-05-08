@@ -2,7 +2,9 @@ import express from "express";
 import { IOperator } from "./operators/interfaces/IOperator";
 import { ITour } from "./operators/interfaces/ITour";
 import { JoinUp } from "./operators/join-up/JoinUp";
+import { JoinUpSearchInvoker } from "./operators/join-up/JoinUpSearchInvoker";
 import { OperatorsRegistry } from "./OperatorsRegistry";
+import { ISearchParams } from "./operators/interfaces/ISearchParams";
 const app = express();
 const port = 8080; // default port to listen
 
@@ -54,12 +56,26 @@ app.listen(port, () => {
     // tslint:disable-next-line:no-console
     console.log(`server started at http://localhost:${port}`);
 
-    if (!hotToursResult) {
-        joinUp.getHotTours()
-            .then((resp) => {
-                hotToursResult = resp;
-            });
-    }
+    const searchParams: ISearchParams = {
+        accomodation: ["AI"],
+        adultsCapacity: 2,
+        childrenCapacity: 0,
+        country: "Египет",
+        dateOfDeparture: "15.05.2019",
+        dateOfArrival: "22.05.2019",
+        durationOfStay: 6,
+        placeOfDeparture: "Kyiv",
+        resorts: ["Хургада"],
+        stars: ["4*", "5*"]
+    };
+    new JoinUpSearchInvoker().search(searchParams);
+
+    // if (!hotToursResult) {
+    //     joinUp.getHotTours()
+    //         .then((resp) => {
+    //             hotToursResult = resp;
+    //         });
+    // }
 
     // joinUp.getHotToursPage(joinUp.getInnerHtml);
     // joinUp.getHotToursPage(joinUp.parseDocument);
