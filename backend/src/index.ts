@@ -7,7 +7,7 @@ import { OperatorsRegistry } from "./OperatorsRegistry";
 import { ISearchParams } from "./operators/interfaces/ISearchParams";
 import { JoinUpQueriesParser } from "./operators/join-up/JoinUpQueriesParser";
 const app = express();
-const port = 80; // default port to listen
+const port = 8080; // default port to listen
 
 // define a route handler for the default home page
 const operatorsRegistry = new OperatorsRegistry();
