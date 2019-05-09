@@ -8,6 +8,7 @@ import { JoinUpSearchResultParser } from "./JoinUpSearchResultParser";
 import { ITour } from "../interfaces/ITour";
 import { JSDOM } from "jsdom";
 import { CountryBinder } from "./CountryBinder";
+import fs from "fs";
 
 interface IBindedParams {
     resorts: number[];
@@ -42,7 +43,7 @@ export class JoinUpSearchInvoker {
                 console.log(respDocument.textContent, "\n\n\n==============\n\n\n");
 
                 return Promise.resolve<ITour[]>(
-                    new JoinUpSearchResultParser().parse(respDocument)
+                    new JoinUpSearchResultParser().parse(respDocument, params)
                 );
             });
     }
