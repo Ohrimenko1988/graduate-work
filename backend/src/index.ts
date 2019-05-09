@@ -5,6 +5,7 @@ import { JoinUp } from "./operators/join-up/JoinUp";
 import { JoinUpSearchInvoker } from "./operators/join-up/JoinUpSearchInvoker";
 import { OperatorsRegistry } from "./OperatorsRegistry";
 import { ISearchParams } from "./operators/interfaces/ISearchParams";
+import { JoinUpQueriesParser } from "./operators/join-up/JoinUpQueriesParser";
 const app = express();
 const port = 8080; // default port to listen
 
@@ -45,11 +46,16 @@ app.get("/hot-tours", async (req, res) => {
     }
 });
 
-// app.get("/search", async (req, res) => {
-//     operatorsRegistry.get().map((operator: IOperator) => {
-//         operator.searchTours(searcResult);
-//     });
-// });
+app.get("/search", (req, res) => {
+    operatorsRegistry.get().map((operator: IOperator) => {
+        const params: ISearchParams = new JoinUpQueriesParser().parse(req);
+        console.log(params);
+        new JoinUpSearchInvoker().search(params)
+            .then((tours: ITour[]) => {
+                res.send(tours);
+            });
+    });
+});
 
 // start the Express server
 app.listen(port, () => {
@@ -66,9 +72,9 @@ app.listen(port, () => {
         durationOfStay: 6,
         placeOfDeparture: "Kyiv",
         resorts: ["Хургада"],
-        stars: ["4*", "5*"]
+        stars: ["4", "5"]
     };
-    new JoinUpSearchInvoker().search(searchParams);
+    // new JoinUpSearchInvoker().search(searchParams);
 
     // if (!hotToursResult) {
     //     joinUp.getHotTours()

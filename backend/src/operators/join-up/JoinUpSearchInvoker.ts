@@ -59,7 +59,7 @@ export class JoinUpSearchInvoker {
             `CHECKIN_BEG=${params.dateOfDeparture}&` +
             `CHECKIN_END=${params.dateOfArrival}&` +
             `STATEINC=${parsedOptions.country}&` +
-            `NIGHTS_FROM=1&` +
+            `NIGHTS_FROM=${params.durationOfStay}&` +
             `NIGHTS_TILL=${params.durationOfStay}&` +
             `PACKET=0&` +
             `PRICE_MIN=&` +

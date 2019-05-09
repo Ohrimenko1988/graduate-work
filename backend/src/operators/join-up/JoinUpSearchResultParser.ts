@@ -3,25 +3,30 @@ import { AppConstants } from "../../AppConstants";
 import { ISearchParams } from "../interfaces/ISearchParams";
 import axios from "axios";
 import { JSDOM } from "jsdom";
+import fs from "fs";
 
 export class JoinUpSearchResultParser {
     public parse(document: Document, params: ISearchParams): Promise<ITour[]> {
         const fullCompletedTours: ITour[] = new Array();
 
         return this.getToursDescriptions(document, params)
-            .then((tours: ITour[]) => {
+            .then(async (tours: ITour[]) => {
 
                 for (const tour of tours) {
-                    axios.get(tour.tourLink)
-                        .then((resp) => {
-                            const tourDocument: Document = new JSDOM(resp.data).window.document;
-                            const imageElement: Element | null = tourDocument.querySelector(".hotel_header_wrap");
+                    const resp = await axios.get(tour.tourLink);
+                    const tourDocument: Document = new JSDOM(resp.data).window.document;
+                    const imageElement: Element | null = tourDocument.querySelector(".hotel_header_wrap");
+                    // if (!imageElement) {
+                    //     fs.writeFileSync("searc-response.html", tourDocument.body.innerHTML);
+                    //     break;
+                    // }
 
-                            if (imageElement) {
-                                tour.imageSource = "" + imageElement.getAttribute("data-image");
-                                fullCompletedTours.push(tour);
-                            }
-                        });
+                    if (imageElement) {
+                        let styleAttribute: string = "" + imageElement.getAttribute("style");
+                        styleAttribute = styleAttribute.trim().replace("background-image: url(", "").replace(")", "");
+                        tour.imageSource = AppConstants.JOIN_UP_BASE_URL + styleAttribute;
+                        fullCompletedTours.push(tour);
+                    }
                 }
             })
             .then(() => {
