@@ -57,11 +57,20 @@ class SearchForm extends Component<any, ISearcFormState> {
         this.hotelCategoriesHandler = this.hotelCategoriesHandler.bind(this);
     }
 
+    test() {
+        let date: Date = new Date();
+    }
+
     onSubmitHandler(event: any) {
         event.preventDefault()
+        const difInMilis: number = this.state.dateOfArrival.valueOf() - this.state.dateOfDeparture.valueOf();
+        const duration: number = new Date(difInMilis).getDate();
+
+
 
         console.log("=====================================")
         console.log(this.state)
+        console.log("===>>>>  day diference: ", duration)
         console.log("=====================================")
 
         const params: ISearchParams = {
@@ -71,7 +80,7 @@ class SearchForm extends Component<any, ISearcFormState> {
             country: this.state.country,
             dateOfDeparture: DateParser.parse(this.state.dateOfDeparture),
             dateOfArrival: DateParser.parse(this.state.dateOfArrival),
-            durationOfStay: this.state.durationOfStay,
+            durationOfStay: duration,
             placeOfDeparture: this.state.placeOfDeparture,
             resorts: this.state.resorts,
             stars: this.state.stars,
@@ -79,6 +88,8 @@ class SearchForm extends Component<any, ISearcFormState> {
 
         console.log(ParamsToQueriesConverter.parse(params));
         console.log(DateParser.parse(this.state.dateOfDeparture));
+
+        
     }
 
     hotelCategoriesHandler(event: any) {
@@ -189,28 +200,34 @@ class SearchForm extends Component<any, ISearcFormState> {
                         className='departure-place search-form-item'
                     />
 
-                    <DurationOfStay
+                    {/* <DurationOfStay
                         stayDurationHandler={this.stayDurationHandler}
                         className='stay-duration search-form-item'
-                    />
+                    /> */}
 
                     <PeoplesCapacity
                         adultsCapacityHandler={this.adultsCapacityHandler}
                         childrenCapacityHandler={this.childrenCapacityHandler}
                         className='peoples-capacity search-form-item'
                     />
-
-                    <DateOfDeparture
-                        value={this.state.dateOfDeparture}
-                        dateHandler={this.departureDateHandler}
-                        className='departure-date search-form-item'
-                    />
-
-                    <DateOfDeparture
-                        value={this.state.dateOfArrival}
-                        dateHandler={this.arrivalDateHandler}
-                        className='arrival-date search-form-item'
-                    />
+                    <div className='calendars search-form-item'>
+                        <div className="departure-calendar calendar-item">
+                            <div className="departure-label label">Select departure date</div>
+                            <DateOfDeparture
+                                value={this.state.dateOfDeparture}
+                                dateHandler={this.departureDateHandler}
+                                className='departure-date'
+                            />
+                        </div>
+                        <div className="arrival-calendar calendar-item">
+                            <div className="arrival-label label">Select arrival date</div>
+                            <DateOfDeparture
+                                value={this.state.dateOfArrival}
+                                dateHandler={this.arrivalDateHandler}
+                                className='arrival-date'
+                            />
+                        </div>
+                    </div>
 
                     <Accomodation {... {
                         className: "accomodation-types search-form-item",

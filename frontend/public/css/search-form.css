@@ -2,6 +2,7 @@
     background-image: url("http://static.asiawebdirect.com/m/bangkok/portals/bali-indonesia-com/homepage/beach-resort/pagePropertiesImage/best-bali-beach-resorts.jpg.jpg");
     background-size: 100% 100%;
 } */
+
 .form-search-form {
     display: flex;
     flex-direction: row;
@@ -27,8 +28,22 @@
     align-self: flex-start;
 }
 
-.search-form .hotel-category{
+.search-form .hotel-category {
     width: 9%;
 }
 
+.form-search-form .search-form .calendars {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 
+.search-form .calendars .calendar-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.search-form .calendars .label {
+    text-align: center;
+}
