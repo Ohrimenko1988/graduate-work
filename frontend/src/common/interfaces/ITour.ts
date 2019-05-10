@@ -1,4 +1,4 @@
-export interface IHotTour {
+export interface ITour {
     tourLink: string;
     imageSource: string;
     title: string;

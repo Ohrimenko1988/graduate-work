@@ -2,7 +2,7 @@ import React from 'react';
 import SearchForm from './search-form/SearchForm';
 import TourListItem, { TourListItemProps } from './search-form/TourListItem';
 import axios from 'axios';
-import { IHotTour } from './common/interfaces/IHotTour';
+import { ITour } from './common/interfaces/ITour';
 import PriceRange from './filter/PriceRange';
 
 interface AppState {
@@ -23,12 +23,12 @@ export default class App extends React.Component<any, AppState> {
     axios.get("http://localhost:8080/hot-tours").then((resp: any) => {
       let recivedTours: TourListItemProps[] = new Array();
       console.log(resp);
-      const hotTours: IHotTour[] = resp.data
+      const hotTours: ITour[] = resp.data
 
       console.log(hotTours);
 
 
-      hotTours.map((tour: IHotTour) => {
+      hotTours.map((tour: ITour) => {
         let itemProps: TourListItemProps = {
           imageSource: tour.imageSource,
           title: tour.title,

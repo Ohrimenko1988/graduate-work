@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 
-class SelectList extends Component<any, any> {
-    constructor(props: any) {
+export interface SelectListProps{
+    label: string;
+    name: string;
+    items: string[];
+    selectionHandler: any;
+}
+class SelectList extends Component<SelectListProps, any> {
+    constructor(props: SelectListProps) {
         super(props)
     }
 

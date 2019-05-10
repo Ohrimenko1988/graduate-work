@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import SelectList from '../../common/SelectList';
 
 class ChildrenCapacity extends Component<any, any> {
-    private childrenCapacityItems: Array<number>;
+    private childrenCapacityItems: Array<string>;
 
     constructor(props: any) {
         super(props)
@@ -10,11 +10,11 @@ class ChildrenCapacity extends Component<any, any> {
         this.childrenCapacityItems = this.createChildrenItems(8)
     }
 
-    createChildrenItems(length: number): Array<number> {
-        let result: Array<number> = new Array();
+    createChildrenItems(length: number): Array<string> {
+        let result: Array<string> = new Array();
 
         for (let i = 0; i <= length; i++) {
-            result.push(i)
+            result.push("" + i)
         }
 
         return result;
