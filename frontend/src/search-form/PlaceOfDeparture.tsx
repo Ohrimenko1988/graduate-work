@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import SelectList from '../common/SelectList';
 
 class PlaceOfDeparture extends Component<any, any> {
-    private static readonly DEPARTURE_PLACES: Array<string> = ['none', 'Kiev', 'Lviv', 'Dnipro']
+    private static readonly DEPARTURE_PLACES: Array<string> = ['----', 'Київ', 'Львів', 'Дніпро']
     constructor(props: any) {
         super(props)
     }

@@ -18,9 +18,6 @@ export class JoinUp implements IOperator {
 
         return axios.get(requestUrl, headerOpt)
             .then((resp): ITour[] => {
-
-                fs.writeFileSync("hot-tours.html", resp.data);
-
                 const respData: string = resp.data;
                 this.hotToursPage = new JSDOM(respData).window.document;
                 return this.hotToursParser.parseDocument(this.hotToursPage);

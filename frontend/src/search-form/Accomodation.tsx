@@ -7,7 +7,7 @@ export interface AccomodationProps {
 }
 
 export default class Accomodation extends Component<AccomodationProps, any> {
-    private static readonly ACCOM_TYPES: string[] = ["OB", "BB", "HB", "FB", "AI", "UAI"];
+    private static readonly ACCOM_TYPES: string[] = ["UAI", "AI", "FB", "BB", "RO"];
     constructor(props: AccomodationProps) {
         super(props);
     }

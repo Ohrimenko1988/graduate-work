@@ -102,7 +102,7 @@ class SearchForm extends Component<any, ISearcFormState> {
     hotelCategoriesHandler(event: any) {
         const changedHotelCategory: string = event.target.value;
         let selectedCategory: Array<string> = new Array();
-        selectedCategory.push(changedHotelCategory);
+        selectedCategory.push(changedHotelCategory.replace("*", ""));
 
         this.setState({
             stars: selectedCategory

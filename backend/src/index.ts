@@ -69,14 +69,28 @@ app.listen(port, () => {
         accomodation: ["AI"],
         adultsCapacity: 2,
         childrenCapacity: 0,
-        country: "Египет",
+        country: "Єгипет",
         dateOfDeparture: "18.05.2019",
         dateOfArrival: "25.05.2019",
         durationOfStay: 6,
-        placeOfDeparture: "Kyiv",
+        placeOfDeparture: "Київ",
         resorts: ["Хургада"],
         stars: ["4", "5"]
     };
+
+    // const searchParams: ISearchParams = {
+    //     accomodation: ["UAI", "AI", "FB", "BB", "RO"],
+    //     adultsCapacity: 2,
+    //     childrenCapacity: 0,
+    //     country: "Іспанія",
+    //     dateOfDeparture: "24.05.2019",
+    //     dateOfArrival: "31.05.2019",
+    //     durationOfStay: 6,
+    //     placeOfDeparture: "Київ",
+    //     resorts: ["Барселона", "Майорка", "Тенеріфе"],
+    //     stars: ["5"]
+    // };
+
     new JoinUpSearchInvoker().search(searchParams);
 
     // if (!hotToursResult) {

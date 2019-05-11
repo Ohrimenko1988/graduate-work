@@ -24,6 +24,10 @@ export class JoinUpSearchResultParser {
         let tourAccomodation: string;
         let tourImageSource: string;
 
+        if (document.querySelectorAll(".box").length === 0) {
+            console.log("No matches found, try to change search parameters");
+        }
+
         document.querySelectorAll(".box").forEach((box: Element) => {
             let temporaryElement: Element | null;
 
@@ -31,6 +35,12 @@ export class JoinUpSearchResultParser {
             temporaryElement = box.querySelector(".title_hotel_stars a");
             if (!temporaryElement) {
                 console.log("fail");
+                return;
+            }
+
+            const hrefValue: string | null = temporaryElement.getAttribute("href");
+            if (!hrefValue) {
+                console.log("Empty href value");
                 return;
             }
 
