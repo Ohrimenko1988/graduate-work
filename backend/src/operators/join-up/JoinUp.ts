@@ -3,6 +3,7 @@ import { JSDOM } from "jsdom";
 import { IOperator } from "../interfaces/IOperator";
 import { ITour } from "../interfaces/ITour";
 import { JoinUpHotTourPageParser } from "./JoinUpHotTourPageParser";
+import fs from "fs";
 
 export class JoinUp implements IOperator {
     public static readonly BASE_URL = "https://joinup.ua";
@@ -12,11 +13,14 @@ export class JoinUp implements IOperator {
     private hotToursPage: Document = new JSDOM().window.document;
 
     public getHotTours(): Promise<ITour[]> {
-        const headerOpt = { headers: { "x-requested-with": "http://localhost:3000" } };
+        const headerOpt = { headers: { "x-requested-with": "http://localhost:8080" } };
         const requestUrl = `https://cors-anywhere.herokuapp.com/${JoinUp.BASE_URL}/hot-tours/`;
 
         return axios.get(requestUrl, headerOpt)
             .then((resp): ITour[] => {
+
+                fs.writeFileSync("hot-tours.html", resp.data);
+
                 const respData: string = resp.data;
                 this.hotToursPage = new JSDOM(respData).window.document;
                 return this.hotToursParser.parseDocument(this.hotToursPage);

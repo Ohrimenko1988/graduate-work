@@ -62,22 +62,30 @@ export class JoinUpHotTourPageParser {
             // get country and resort
 
             const tourCountryElement: Element | null = element.querySelector("p.title");
+            const resortElement: Element | null = element.querySelector("p.title small");
 
             if (!tourCountryElement) {
                 return;
             }
 
+            if (!resortElement) {
+                return;
+            }
+
             const tourCountryElementText: string | null = tourCountryElement.textContent;
+            const resortElementText: string | null = resortElement.textContent;
 
             if (!tourCountryElementText) {
                 return;
             }
 
-            tourCountry = tourCountryElementText.replace(/\t/g, " ");
-            const countryAndResort: string[] = tourCountry.split("(");
+            if (!resortElementText) {
+                return;
+            }
 
-            tourCountry = countryAndResort[0].trim();
-            tourResort = countryAndResort[1].replace(")", "").trim();
+            tourCountry = tourCountryElementText.replace(resortElementText, "");
+            tourCountry = tourCountry.replace(/\t/g, "").trim();
+            tourResort = resortElementText;
 
             // get additional information
             const additionalInformationElement: Element | null = element.querySelector(".sec_title_02");

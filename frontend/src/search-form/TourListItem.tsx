@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 
 export interface TourListItemProps {
-    imageSource: string
-    title: string
-    country: string
-    resort: string
-    typeOfAccommodation: string
-    duration: string
-    departureDate: string
-    arrivalDate: string
-    adultsCapacity: number
-    childrenCapacity: number
-    price: string
+    tourLink: string;
+    imageSource: string;
+    title: string;
+    country: string;
+    resort: string;
+    typeOfAccommodation: string;
+    duration: string;
+    departureDate: string;
+    arrivalDate: string;
+    adultsCapacity: number;
+    childrenCapacity: number;
+    price: string;
 }
 
 

@@ -38,9 +38,7 @@ export class JoinUpSearchInvoker {
         return axios.get(requestUrl)
             .then((resp) => {
                 const htmlPage: string = `<!DOCTYPE html><head></head><body>${"" + resp.data}</body></html>`;
-                console.log(htmlPage, "\n\n\n==============\n\n\n");
                 const respDocument: Document = new JSDOM(htmlPage).window.document;
-                console.log(respDocument.textContent, "\n\n\n==============\n\n\n");
 
                 return Promise.resolve<ITour[]>(
                     new JoinUpSearchResultParser().parse(respDocument, params)

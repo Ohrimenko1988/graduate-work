@@ -47,6 +47,9 @@ app.get("/hot-tours", async (req, res) => {
 });
 
 app.get("/search", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Content-Type", "application/json");
+
     operatorsRegistry.get().map((operator: IOperator) => {
         const params: ISearchParams = new JoinUpQueriesParser().parse(req);
         console.log(params);
@@ -67,14 +70,14 @@ app.listen(port, () => {
         adultsCapacity: 2,
         childrenCapacity: 0,
         country: "Египет",
-        dateOfDeparture: "15.05.2019",
-        dateOfArrival: "22.05.2019",
+        dateOfDeparture: "18.05.2019",
+        dateOfArrival: "25.05.2019",
         durationOfStay: 6,
         placeOfDeparture: "Kyiv",
         resorts: ["Хургада"],
         stars: ["4", "5"]
     };
-    // new JoinUpSearchInvoker().search(searchParams);
+    new JoinUpSearchInvoker().search(searchParams);
 
     // if (!hotToursResult) {
     //     joinUp.getHotTours()

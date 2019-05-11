@@ -30,6 +30,7 @@ export default class App extends React.Component<any, AppState> {
 
       hotTours.map((tour: ITour) => {
         let itemProps: TourListItemProps = {
+          tourLink: tour.tourLink,
           imageSource: tour.imageSource,
           title: tour.title,
           country: tour.country,

@@ -10,6 +10,7 @@ import { ParamsToQueriesConverter } from '../ParamsToQueriesConverter';
 import { DateParser } from '../common/DateParser';
 import Accomodation from './Accomodation';
 import Stars from './Stars';
+import axios from "axios";
 
 interface ISearcFormState {
     country: string,
@@ -80,7 +81,7 @@ class SearchForm extends Component<any, ISearcFormState> {
             country: this.state.country,
             dateOfDeparture: DateParser.parse(this.state.dateOfDeparture),
             dateOfArrival: DateParser.parse(this.state.dateOfArrival),
-            durationOfStay: duration,
+            durationOfStay: duration - 2,
             placeOfDeparture: this.state.placeOfDeparture,
             resorts: this.state.resorts,
             stars: this.state.stars,
@@ -89,7 +90,13 @@ class SearchForm extends Component<any, ISearcFormState> {
         console.log(ParamsToQueriesConverter.parse(params));
         console.log(DateParser.parse(this.state.dateOfDeparture));
 
-        
+        const requestUrlWithQueries: string = "http://localhost:8080/search" + ParamsToQueriesConverter.parse(params)
+
+        axios.get(requestUrlWithQueries).then(resp => {
+            console.log(resp.data)
+        })
+
+
     }
 
     hotelCategoriesHandler(event: any) {
@@ -199,11 +206,6 @@ class SearchForm extends Component<any, ISearcFormState> {
                         departurePlaceHandler={this.departurePlaceHandler}
                         className='departure-place search-form-item'
                     />
-
-                    {/* <DurationOfStay
-                        stayDurationHandler={this.stayDurationHandler}
-                        className='stay-duration search-form-item'
-                    /> */}
 
                     <PeoplesCapacity
                         adultsCapacityHandler={this.adultsCapacityHandler}

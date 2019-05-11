@@ -9,30 +9,7 @@ export class JoinUpSearchResultParser {
     public parse(document: Document, params: ISearchParams): Promise<ITour[]> {
         const fullCompletedTours: ITour[] = new Array();
 
-        return this.getToursDescriptions(document, params)
-            .then(async (tours: ITour[]) => {
-
-                for (const tour of tours) {
-                    const resp = await axios.get(tour.tourLink);
-                    const tourDocument: Document = new JSDOM(resp.data).window.document;
-                    const imageElement: Element | null = tourDocument.querySelector(".hotel_header_wrap");
-                    // if (!imageElement) {
-                    //     fs.writeFileSync("searc-response.html", tourDocument.body.innerHTML);
-                    //     break;
-                    // }
-
-                    if (imageElement) {
-                        let styleAttribute: string = "" + imageElement.getAttribute("style");
-                        styleAttribute = styleAttribute.trim().replace("background-image: url(", "").replace(")", "");
-                        tour.imageSource = AppConstants.JOIN_UP_BASE_URL + styleAttribute;
-                        fullCompletedTours.push(tour);
-                    }
-                }
-            })
-            .then(() => {
-                console.log(fullCompletedTours);
-                return Promise.resolve<ITour[]>(fullCompletedTours);
-            });
+        return this.getToursDescriptions(document, params);
     }
     private getToursDescriptions(document: Document, params: ISearchParams): Promise<ITour[]> {
         const tours: ITour[] = new Array();
@@ -45,6 +22,7 @@ export class JoinUpSearchResultParser {
         let tourDuration: string;
         let tourPrice: string;
         let tourAccomodation: string;
+        let tourImageSource: string;
 
         document.querySelectorAll(".box").forEach((box: Element) => {
             let temporaryElement: Element | null;
@@ -119,6 +97,26 @@ export class JoinUpSearchResultParser {
 
             tourAccomodation = "" + temporaryElement.textContent;
             console.log(tourAccomodation);
+
+            // image
+            temporaryElement = box.querySelector(".cover_bg_tour");
+
+            if (!temporaryElement) {
+                console.log("image element false");
+                return;
+            }
+
+            const imageSource: string | null = temporaryElement.getAttribute("style");
+
+            if (!imageSource) {
+                console.log("image source false");
+                return;
+            }
+
+            tourImageSource = imageSource.replace("background:url(", "").replace(") no-repeat;", "").trim();
+            tourImageSource = AppConstants.JOIN_UP_BASE_URL + tourImageSource;
+
+            console.log(tourImageSource);
             console.log("\n\n==============\n\n");
 
             tours.push({
@@ -132,7 +130,7 @@ export class JoinUpSearchResultParser {
                 adultsCapacity: params.adultsCapacity,
                 childrenCapacity: params.childrenCapacity,
                 arrivalDate: "",
-                imageSource: "",
+                imageSource: tourImageSource,
                 accommodation: tourAccomodation
             });
 
