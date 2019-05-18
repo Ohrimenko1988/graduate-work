@@ -11,6 +11,7 @@ import { DateParser } from '../common/DateParser';
 import Accomodation from './Accomodation';
 import Stars from './Stars';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 interface ISearcFormState {
     country: string,
@@ -92,11 +93,16 @@ class SearchForm extends Component<any, ISearcFormState> {
 
         const requestUrlWithQueries: string = "http://localhost:8080/search" + ParamsToQueriesConverter.parse(params)
 
-        axios.get(requestUrlWithQueries).then(resp => {
-            console.log(resp.data)
-        })
+        window.open("/results")
 
+        // this.props.history.push({
+        //     pathname: "/results",
+        //     data: requestUrlWithQueries
+        // })
 
+        // axios.get(requestUrlWithQueries).then(resp => {
+        //     console.log(resp.data);
+        // })
     }
 
     hotelCategoriesHandler(event: any) {

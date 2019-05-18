@@ -4,12 +4,13 @@ import TourListItem, { TourListItemProps } from './search-form/TourListItem';
 import axios from 'axios';
 import { ITour } from './common/interfaces/ITour';
 import PriceRange from './filter/PriceRange';
+import { connect } from 'react-redux';
 
 interface AppState {
   hotTours: TourListItemProps[];
 }
 
-export default class App extends React.Component<any, AppState> {
+class App extends React.Component<any, AppState> {
   constructor(props: any) {
     super(props)
 
@@ -94,8 +95,18 @@ export default class App extends React.Component<any, AppState> {
   // return <TourListItem {...itemProps} />
   // })
 
+  onClickTestHandler(){
+    this.props.onAddTrack("it works");
+    window.open("/results");
+  }
+
+  onClickTestHandler2(){
+    this.props.onAddTrack("it works");
+  }
 
   render() {
+    console.log("===>>>", this.props.testStore)
+
     return (
       <div className='main-page app-body-arrea' >
         <div className='app-arrea-item header-arrea'>Header</div>
@@ -115,6 +126,8 @@ export default class App extends React.Component<any, AppState> {
           </div>
 
           <div className='content-item right-comercial-arrea'>Right Comercial</div>
+          <button onClick={this.onClickTestHandler.bind(this)}>test</button>
+          <button onClick={this.onClickTestHandler2.bind(this)}>test2</button>
 
         </div>
 
@@ -125,4 +138,15 @@ export default class App extends React.Component<any, AppState> {
     );
   }
 }
+
+export default connect(
+  state => ({
+    testStore: state
+  }),
+  dispatch => ({
+    onAddTrack: (trackName: any) =>{
+      dispatch({type: 'ADD_TRACK', payload: trackName});
+    }
+  })
+)(App);
 

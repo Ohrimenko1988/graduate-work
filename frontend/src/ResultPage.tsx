@@ -3,26 +3,29 @@ import TourListItem, { TourListItemProps } from './search-form/TourListItem';
 import Button from './common/Button';
 import SearchForm from './search-form/SearchForm';
 import ToursFilter from './filter/ToursFilter';
+import {connect} from 'react-redux';
 
-export interface ResultPageProps {
-    tours: TourListItemProps[];
-}
+// export interface ResultPageProps {
+//     tours?: TourListItemProps[];
+// }
 
 export interface ResultPageState {
     tours: TourListItemProps[];
 }
 
-class ResultPage extends Component<ResultPageProps, ResultPageState> {
-    constructor (props:ResultPageProps) {
+class ResultPage extends Component<any, ResultPageState> {
+    constructor (props:any) {
         super(props)
         
         this.state = {
-            tours: this.props.tours
+            tours: new Array<TourListItemProps>()
         }
 
     }
     
-
+    componentWillMount(){
+        console.log("===>>>", this.props.testStore)       
+    }
 
     renderTours() {
         return this.state.tours.map(tour => {
@@ -60,5 +63,10 @@ class ResultPage extends Component<ResultPageProps, ResultPageState> {
     }
 }
 
-export default ResultPage
+export default connect(
+    state => ({
+        testStore: state
+    }),
+    dispatch => ({})
+)(ResultPage);
 

@@ -15,11 +15,14 @@ export interface TourListItemProps {
     price: string;
 }
 
-
 export default function TourListItem(props: TourListItemProps): JSX.Element {
+    function onClickHandler(event: any) {
+        window.open(props.tourLink);
+    }
+
     return (
         <div className='tour-list-item' >
-            <div className='image-container item-arrea'>
+            <div className='image-container item-arrea' onClick={onClickHandler}>
                 <img className='image tour-list-item-part' src={props.imageSource} alt="resort" />
             </div>
             <div className='item-arrea'>
