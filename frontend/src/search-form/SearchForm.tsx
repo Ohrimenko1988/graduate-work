@@ -93,16 +93,44 @@ class SearchForm extends Component<any, ISearcFormState> {
 
         const requestUrlWithQueries: string = "http://localhost:8080/search" + ParamsToQueriesConverter.parse(params)
 
-        window.open("/results")
+        // if (this.state.country === 'none') {
+        //     window.alert("Заповніть, будь-ласка, всі поля.");
+        //     return;
+        // }
 
-        // this.props.history.push({
-        //     pathname: "/results",
-        //     data: requestUrlWithQueries
-        // })
+        // if (this.state.resorts.length === 0) {
+        //     window.alert("Заповніть, будь-ласка, всі поля.");
+        //     return;
+        // }
+
+        // if (this.state.accomodation.length === 0) {
+        //     window.alert("Заповніть, будь-ласка, всі поля.");
+        //     return;
+        // }
+
+        // if (this.state.stars.length === 0) {
+        //     window.alert("Заповніть, будь-ласка, всі поля.");            
+        //     return;
+        // }
+
+        window.open(`/results${this.createQueries(params)}`);
 
         // axios.get(requestUrlWithQueries).then(resp => {
         //     console.log(resp.data);
         // })
+    }
+
+    createQueries(params: ISearchParams): string {
+        return `?accomodation=${params.accomodation}&` +
+            `adultsCapacity=${params.adultsCapacity}&` +
+            `childrenCapacity=${params.childrenCapacity}&` +
+            `country=${params.country}&` +
+            `dateOfDeparture=${params.dateOfDeparture}&` +
+            `dateOfArrival=${params.dateOfArrival}&` +
+            `durationOfStay=${params.durationOfStay}&` +
+            `placeOfDeparture=${params.placeOfDeparture}&` +
+            `resorts=${params.resorts}&` +
+            `stars=${params.stars}`;
     }
 
     hotelCategoriesHandler(event: any) {

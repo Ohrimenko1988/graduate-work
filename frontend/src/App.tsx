@@ -95,45 +95,20 @@ class App extends React.Component<any, AppState> {
   // return <TourListItem {...itemProps} />
   // })
 
-  onClickTestHandler(){
-    this.props.onAddTrack("it works");
-    window.open("/results");
-  }
-
-  onClickTestHandler2(){
-    this.props.onAddTrack("it works");
-  }
 
   render() {
-    console.log("===>>>", this.props.testStore)
-
     return (
       <div className='main-page app-body-arrea' >
         <div className='app-arrea-item header-arrea'>Header</div>
-
         <div className='app-arrea-item search-form-arrea' ><SearchForm /></div>
-
         <div className='app-arrea-item main-page-content'>
-
-
-          <div className='content-item left-comercial-arrea'>Left Comercial</div>
-
+          <div className='content-item left-comercial-arrea'></div>
           <div className='content-item content-arrea'>
-
             {this.renderHotTours()}
-
-
           </div>
-
-          <div className='content-item right-comercial-arrea'>Right Comercial</div>
-          <button onClick={this.onClickTestHandler.bind(this)}>test</button>
-          <button onClick={this.onClickTestHandler2.bind(this)}>test2</button>
-
+          <div className='content-item right-comercial-arrea'></div>
         </div>
-
         <div className='app-arrea-item footer'>Footer</div>
-
-
       </div>
     );
   }
@@ -144,8 +119,8 @@ export default connect(
     testStore: state
   }),
   dispatch => ({
-    onAddTrack: (trackName: any) =>{
-      dispatch({type: 'ADD_TRACK', payload: trackName});
+    onAddTrack: (trackName: any) => {
+      dispatch({ type: 'ADD_TRACK', payload: trackName });
     }
   })
 )(App);

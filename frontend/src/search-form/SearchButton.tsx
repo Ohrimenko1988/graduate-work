@@ -15,7 +15,7 @@ class SearchButton extends Component<any, any> {
         return (
             <div className={this.props.className}>
                 <Button
-                    value='Search'
+                    value='Пошук'
                     onClick={this.onClickHandler}
                     className='search-button'
                 />
