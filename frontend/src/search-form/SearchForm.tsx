@@ -12,6 +12,7 @@ import Accomodation from './Accomodation';
 import Stars from './Stars';
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import { AppConstants } from '../AppConstants';
 
 interface ISearcFormState {
     country: string,
@@ -68,8 +69,6 @@ class SearchForm extends Component<any, ISearcFormState> {
         const difInMilis: number = this.state.dateOfArrival.valueOf() - this.state.dateOfDeparture.valueOf();
         const duration: number = new Date(difInMilis).getDate();
 
-
-
         console.log("=====================================")
         console.log(this.state)
         console.log("===>>>>  day diference: ", duration)
@@ -91,33 +90,28 @@ class SearchForm extends Component<any, ISearcFormState> {
         console.log(ParamsToQueriesConverter.parse(params));
         console.log(DateParser.parse(this.state.dateOfDeparture));
 
-        const requestUrlWithQueries: string = "http://localhost:8080/search" + ParamsToQueriesConverter.parse(params)
 
-        // if (this.state.country === 'none') {
-        //     window.alert("Заповніть, будь-ласка, всі поля.");
-        //     return;
-        // }
+        if (this.state.country === 'none') {
+            window.alert("Заповніть, будь-ласка, всі поля.");
+            return;
+        }
 
-        // if (this.state.resorts.length === 0) {
-        //     window.alert("Заповніть, будь-ласка, всі поля.");
-        //     return;
-        // }
+        if (this.state.resorts.length === 0) {
+            window.alert("Заповніть, будь-ласка, всі поля.");
+            return;
+        }
 
-        // if (this.state.accomodation.length === 0) {
-        //     window.alert("Заповніть, будь-ласка, всі поля.");
-        //     return;
-        // }
+        if (this.state.accomodation.length === 0) {
+            window.alert("Заповніть, будь-ласка, всі поля.");
+            return;
+        }
 
-        // if (this.state.stars.length === 0) {
-        //     window.alert("Заповніть, будь-ласка, всі поля.");            
-        //     return;
-        // }
+        if (this.state.stars.length === 0) {
+            window.alert("Заповніть, будь-ласка, всі поля.");            
+            return;
+        }
 
-        window.open(`/results${this.createQueries(params)}`);
-
-        // axios.get(requestUrlWithQueries).then(resp => {
-        //     console.log(resp.data);
-        // })
+        window.open(`${AppConstants.RESULT_PAGE_PATH}${this.createQueries(params)}`);
     }
 
     createQueries(params: ISearchParams): string {
@@ -184,7 +178,6 @@ class SearchForm extends Component<any, ISearcFormState> {
         this.setState({
             durationOfStay: Number.parseInt(event.target.value, 10)
         })
-
     }
 
     departureDateHandler(dateOfDeparture: any) {
@@ -196,25 +189,25 @@ class SearchForm extends Component<any, ISearcFormState> {
     arrivalDateHandler(dateOfArrival: any) {
         this.setState({
             dateOfArrival
-        })
+        });
     }
 
     toggleResortCheckbox = (event: any) => {
         const resortName: string = event.target.value
 
         if (this.enabledResorts.has(resortName)) {
-            this.enabledResorts.delete(resortName)
+            this.enabledResorts.delete(resortName);
             this.setState({
                 resorts: Array.from(this.enabledResorts.keys())
-            })
+            });
 
-            return
+            return;
         }
 
         this.enabledResorts.add(resortName)
         this.setState({
             resorts: Array.from(this.enabledResorts.keys())
-        })
+        });
     }
 
     selectCountryHandler = (event: any) => {
@@ -222,7 +215,7 @@ class SearchForm extends Component<any, ISearcFormState> {
         this.setState({
             country: event.target.value,
             resorts: Array.from(this.enabledResorts.keys())
-        })
+        });
     }
 
     render() {

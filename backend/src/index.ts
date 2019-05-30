@@ -50,46 +50,55 @@ app.get("/search", (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Content-Type", "application/json");
 
-    operatorsRegistry.get().map((operator: IOperator) => {
-        const params: ISearchParams = new JoinUpQueriesParser().parse(req);
-        console.log(params);
-        new JoinUpSearchInvoker().search(params)
-            .then((tours: ITour[]) => {
-                res.send(tours);
-            });
+    const params: ISearchParams = new JoinUpQueriesParser().parse(req);
+
+    operatorsRegistry.searchTours(params).then((tours: ITour[]) =>{
+        res.send(tours);
     });
+
+    // operatorsRegistry.get().map((operator: IOperator) => {
+    //     const params: ISearchParams = new JoinUpQueriesParser().parse(req);
+    //     console.log(params);
+    //     new JoinUpSearchInvoker().search(params)
+    //         .then((tours: ITour[]) => {
+    //             res.send(tours);
+    //         });
+    // });
 });
 
 // start the Express server
-app.listen(port, () => {
+app.listen(port, async () => {
     // tslint:disable-next-line:no-console
     console.log(`server started at http://localhost:${port}`);
 
+    // const searchParams: ISearchParams = {
+    //     accomodation: ["AI"],
+    //     adultsCapacity: 2,
+    //     childrenCapacity: 0,
+    //     country: "Єгипет",
+    //     dateOfDeparture: "18.05.2019",
+    //     dateOfArrival: "25.05.2019",
+    //     durationOfStay: 6,
+    //     placeOfDeparture: "Київ",
+    //     resorts: ["Хургада"],
+    //     stars: ["4", "5"]
+    // };
+
+    // hotToursResult = await joinUp.getHotTours();
+    // console.log(hotToursResult);
+
     const searchParams: ISearchParams = {
-        accomodation: ["AI"],
+        accomodation: ["UAI", "AI", "FB", "BB", "RO"],
         adultsCapacity: 2,
         childrenCapacity: 0,
         country: "Єгипет",
-        dateOfDeparture: "18.05.2019",
-        dateOfArrival: "25.05.2019",
+        dateOfDeparture: "23.07.2019",
+        dateOfArrival: "30.07.2019",
         durationOfStay: 6,
         placeOfDeparture: "Київ",
-        resorts: ["Хургада"],
-        stars: ["4", "5"]
+        resorts: ["Хургада", "Шарм ель Шейх"],
+        stars: ["5"]
     };
-
-    // const searchParams: ISearchParams = {
-    //     accomodation: ["UAI", "AI", "FB", "BB", "RO"],
-    //     adultsCapacity: 2,
-    //     childrenCapacity: 0,
-    //     country: "Іспанія",
-    //     dateOfDeparture: "24.05.2019",
-    //     dateOfArrival: "31.05.2019",
-    //     durationOfStay: 6,
-    //     placeOfDeparture: "Київ",
-    //     resorts: ["Барселона", "Майорка", "Тенеріфе"],
-    //     stars: ["5"]
-    // };
 
     new JoinUpSearchInvoker().search(searchParams);
 

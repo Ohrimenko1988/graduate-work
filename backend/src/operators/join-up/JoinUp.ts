@@ -4,6 +4,8 @@ import { IOperator } from "../interfaces/IOperator";
 import { ITour } from "../interfaces/ITour";
 import { JoinUpHotTourPageParser } from "./JoinUpHotTourPageParser";
 import fs from "fs";
+import { JoinUpSearchInvoker } from "./JoinUpSearchInvoker";
+import { ISearchParams } from "../interfaces/ISearchParams";
 
 export class JoinUp implements IOperator {
     public static readonly BASE_URL = "https://joinup.ua";
@@ -11,6 +13,7 @@ export class JoinUp implements IOperator {
     private static readonly TOUR_IMAGE_CSS_LOCATOR = JoinUp.HOT_TOUR_CSS_LOCATOR + " .cover_bg_tour";
     private hotToursParser: JoinUpHotTourPageParser = new JoinUpHotTourPageParser();
     private hotToursPage: Document = new JSDOM().window.document;
+    private searcInvoker: JoinUpSearchInvoker = new JoinUpSearchInvoker();
 
     public getHotTours(): Promise<ITour[]> {
         const headerOpt = { headers: { "x-requested-with": "http://localhost:8080" } };
@@ -24,8 +27,8 @@ export class JoinUp implements IOperator {
             });
     }
 
-    public searchTours(): Promise<ITour[]> {
-        return Promise.resolve(new Array<ITour>());
+    public searchTours(params: ISearchParams): Promise<ITour[]> {
+        return this.searcInvoker.search(params);
     }
 
 }

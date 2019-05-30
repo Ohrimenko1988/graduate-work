@@ -5,12 +5,15 @@ import axios from 'axios';
 import { ITour } from './common/interfaces/ITour';
 import PriceRange from './filter/PriceRange';
 import { connect } from 'react-redux';
+import { AppConstants } from './AppConstants';
 
 interface AppState {
   hotTours: TourListItemProps[];
 }
 
 class App extends React.Component<any, AppState> {
+  private static readonly HOT_TOURS_REQUEST_URL: string = `${AppConstants.BASE_REQUEST_URL}${AppConstants.HOT_TOURS_URI}`;
+
   constructor(props: any) {
     super(props)
 
@@ -21,12 +24,12 @@ class App extends React.Component<any, AppState> {
   }
 
   componentWillMount() {
-    axios.get("http://localhost:8080/hot-tours").then((resp: any) => {
+      axios.get(App.HOT_TOURS_REQUEST_URL).then((resp: any) => {
       let recivedTours: TourListItemProps[] = new Array();
-      console.log(resp);
-      const hotTours: ITour[] = resp.data
+      console.log("Response of hot tours request \n", resp);
 
-      console.log(hotTours);
+      const hotTours: ITour[] = resp.data
+      console.log("Received 'ITour' list \n", hotTours);
 
 
       hotTours.map((tour: ITour) => {
@@ -48,7 +51,7 @@ class App extends React.Component<any, AppState> {
         recivedTours.push(itemProps)
       })
 
-      console.log(recivedTours);
+      console.log("List of 'TourListItemProps' \n", recivedTours);
 
       this.setState({
         hotTours: recivedTours
@@ -61,40 +64,6 @@ class App extends React.Component<any, AppState> {
       return <TourListItem {...tour} />
     })
   }
-
-  // const tourListItemProps: TourListItemProps = {
-  //   imageSource: 'https://s-ec.bstatic.com/xdata/images/hotel/max500/109664921.jpg?k=6ab9cf7ddbb132caf4f206a03c6226f9f491d668722b0376db6bd42e91e3d323&o=',
-  //   title: 'Title',
-  //   country: 'Country',
-  //   resort: 'Resort',
-  //   typeOfAccommodation: 'Accom',
-  //   duration: 'Duration',
-  //   departureDate: 'Departure Date',
-  //   arrivalDate: 'Arrival Date',
-  //   adultsCapacity: 2,
-  //   childrenCapacity: 0,
-  //   price: 'Price'
-  // }
-
-
-  // return hotTours.map((tour: IHotTour) => {
-  // let itemProps: TourListItemProps = {
-  //   imageSource: tour.imageSource,
-  //   title: tour.title,
-  //   country: tour.country,
-  //   resort: tour.resort,
-  //   typeOfAccommodation: tour.accommodation,
-  //   duration: "" + tour.duration,
-  //   departureDate: tour.departureDate,
-  //   arrivalDate: tour.arrivalDate,
-  //   adultsCapacity: tour.adultsCapacity,
-  //   childrenCapacity: tour.childrenCapacity,
-  //   price: tour.price
-  // }
-
-  // return <TourListItem {...itemProps} />
-  // })
-
 
   render() {
     return (

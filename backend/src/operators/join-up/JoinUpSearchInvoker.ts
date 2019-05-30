@@ -40,15 +40,13 @@ export class JoinUpSearchInvoker {
                 const htmlPage: string = `<!DOCTYPE html><head></head><body>${"" + resp.data}</body></html>`;
                 const respDocument: Document = new JSDOM(htmlPage).window.document;
 
-                fs.writeFileSync("resp-page.html", htmlPage);
-
                 return Promise.resolve<ITour[]>(
                     new JoinUpSearchResultParser().parse(respDocument, params)
                 );
             });
     }
 
-    private createRequestUrlWithQueries(params: ISearchParams): string {
+    public createRequestUrlWithQueries(params: ISearchParams): string {
         const parsedOptions: IBindedParams = this.parseInputOptions(params);
 
         return `${AppConstants.JOIN_UP_SEARCH_URL}?` +
