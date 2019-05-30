@@ -9,7 +9,7 @@
     "prestart": "npm run build",
     "start": "node .",
     "unit-test": "mocha --require ts-node/register -u tdd --spec src/tests/unit/*.spec.ts",
-    "integration-test": "mocha --require ts-node/register -u tdd --spec src/tests/integration/*.spec.ts"
+    "integration-test": "mocha --require ts-node/register -u tdd --timeout 120000 --spec src/tests/integration/*.spec.ts"
   },
   "keywords": [],
   "author": "",

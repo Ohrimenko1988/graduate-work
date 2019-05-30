@@ -10,23 +10,23 @@ export class OperatorsRegistry {
     }
 
     public async searchTours(searchParams: ISearchParams): Promise<ITour[]> {
-        const result: ITour[] = [];
+        let result: ITour[] = [];
 
-        await this.registry.forEach(async (operator) => {
+        for (const operator of this.registry) {
             const tours: ITour[] = await operator.searchTours(searchParams);
-            result.concat(tours);
-        });
+            result = result.concat(tours);
+        }
 
         return result;
     }
 
     public async getHotTours(): Promise<ITour[]> {
-        const result: ITour[] = [];
+        let result: ITour[] = new Array();
 
-        await this.registry.forEach(async (operator) => {
+        for (const operator of this.registry) {
             const tours: ITour[] = await operator.getHotTours();
-            result.concat(tours);
-        });
+            result = result.concat(tours);
+        }
 
         return result;
     }
