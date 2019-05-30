@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "lib": ["es6", "dom"],
+    "types": ["@types/mocha", "@types/node"]
+
+  }
+}

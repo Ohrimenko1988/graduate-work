@@ -46,15 +46,15 @@ app.get("/hot-tours", async (req, res) => {
     }
 });
 
-app.get("/search", (req, res) => {
+app.get("/search", async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Content-Type", "application/json");
 
     const params: ISearchParams = new JoinUpQueriesParser().parse(req);
+    // const tours: ITour[] = await operatorsRegistry.searchTours(params);
+    const tours: ITour[] = await joinUp.searchTours(params);
 
-    operatorsRegistry.searchTours(params).then((tours: ITour[]) =>{
-        res.send(tours);
-    });
+    res.send(tours);
 
     // operatorsRegistry.get().map((operator: IOperator) => {
     //     const params: ISearchParams = new JoinUpQueriesParser().parse(req);
@@ -85,22 +85,23 @@ app.listen(port, async () => {
     // };
 
     // hotToursResult = await joinUp.getHotTours();
+
     // console.log(hotToursResult);
 
-    const searchParams: ISearchParams = {
-        accomodation: ["UAI", "AI", "FB", "BB", "RO"],
-        adultsCapacity: 2,
-        childrenCapacity: 0,
-        country: "Єгипет",
-        dateOfDeparture: "23.07.2019",
-        dateOfArrival: "30.07.2019",
-        durationOfStay: 6,
-        placeOfDeparture: "Київ",
-        resorts: ["Хургада", "Шарм ель Шейх"],
-        stars: ["5"]
-    };
+    // const searchParams: ISearchParams = {
+    //     accomodation: ["UAI", "AI", "FB", "BB", "RO"],
+    //     adultsCapacity: 2,
+    //     childrenCapacity: 0,
+    //     country: "Єгипет",
+    //     dateOfDeparture: "23.07.2019",
+    //     dateOfArrival: "30.07.2019",
+    //     durationOfStay: 6,
+    //     placeOfDeparture: "Київ",
+    //     resorts: ["Хургада", "Шарм ель Шейх"],
+    //     stars: ["5"]
+    // };
 
-    new JoinUpSearchInvoker().search(searchParams);
+    // new JoinUpSearchInvoker().search(searchParams);
 
     // if (!hotToursResult) {
     //     joinUp.getHotTours()

@@ -75,9 +75,9 @@ function getArrivalDate(month: number, year: number): string {
 }
 
 function createDate(day: number, month: number, year: number): string {
-    let convertedDay: string = "" + day
+    let convertedDay: string = "" + day;
     let convertedMonth: string = "" + month;
-    let convertedYear: string = "" + year;
+    const convertedYear: string = "" + year;
 
     if (day < 10) {
         convertedDay = `0${day}`;

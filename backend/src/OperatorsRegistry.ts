@@ -17,6 +17,7 @@ export class OperatorsRegistry {
             result = result.concat(tours);
         }
 
+        console.log(result);
         return result;
     }
 

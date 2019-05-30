@@ -22,6 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "help": "react-scripts compile",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -42,9 +43,12 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^4.3.3",
+    "@types/react-test-renderer": "^16.8.1",
     "axios": "^0.18.0",
+    "jest": "^24.7.1",
     "react-calendar": "^2.18.1",
     "react-router-dom": "^5.0.0",
+    "react-test-renderer": "^16.8.6",
     "typed-rest-client": "^1.2.0"
   }
 }

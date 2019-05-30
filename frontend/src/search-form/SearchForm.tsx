@@ -14,7 +14,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import { AppConstants } from '../AppConstants';
 
-interface ISearcFormState {
+export interface ISearcFormState {
     country: string,
     resorts: string[],
     dateOfDeparture: Date,
