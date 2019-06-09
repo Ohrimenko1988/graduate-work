@@ -39,7 +39,7 @@ class MainPage extends React.Component<any, MainPageState> {
           title: tour.title,
           country: tour.country,
           resort: tour.resort,
-          typeOfAccommodation: tour.accommodation,
+          accommodation: tour.accommodation,
           duration: "" + tour.duration,
           departureDate: tour.departureDate,
           arrivalDate: tour.arrivalDate,

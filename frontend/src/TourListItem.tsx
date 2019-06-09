@@ -7,7 +7,7 @@ export interface TourListItemProps {
     title: string;
     country: string;
     resort: string;
-    typeOfAccommodation: string;
+    accommodation: string;
     duration: string;
     departureDate: string;
     arrivalDate: string;
@@ -50,7 +50,7 @@ export default function TourListItem(props: TourListItemProps): JSX.Element {
                     <div className='description'>
                         <div className='details left'>
                             <div className='descriptionText'>Тип перебування</div>
-                            <div className='type-of-accommodation tour-list-item-part'>{props.typeOfAccommodation}</div>
+                            <div className='type-of-accommodation tour-list-item-part'>{props.accommodation}</div>
                         </div>
 
                         <div className='details right'>

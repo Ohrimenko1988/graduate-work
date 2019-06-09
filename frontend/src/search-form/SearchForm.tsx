@@ -69,11 +69,6 @@ class SearchForm extends Component<any, ISearcFormState> {
         const difInMilis: number = this.state.dateOfArrival.valueOf() - this.state.dateOfDeparture.valueOf();
         const duration: number = new Date(difInMilis).getDate();
 
-        console.log("=====================================")
-        console.log(this.state)
-        console.log("===>>>>  day diference: ", duration)
-        console.log("=====================================")
-
         const params: ISearchParams = {
             accomodation: this.state.accomodation,
             adultsCapacity: this.state.adultsCapacity,

@@ -10,17 +10,17 @@ export interface PriceRangeProps {
 const PriceRange: React.FC<PriceRangeProps> = (props: PriceRangeProps) => {
     return (
         <div className='price-range'>
-            <div className='title'>Select price range</div>
+            <div className='title'>Фільтрація за ціною</div>
             <div className='price-arrea'>
                 <div className='price-arrea-item'>
-                    <div className='title'>From</div>
+                    <div className='title'>Від</div>
                     <div className='input-field'>
                         <input type="text" value={props.minPriceValue} onChange={props.minimumFieldOnChangeHandler} />
                     </div>
                 </div>
 
                 <div className='price-arrea-item'>
-                    <div className='title'>To</div>
+                    <div className='title'>До</div>
                     <div className='input-field'>
                         <input type="text" value={props.maxPriceValue}  onChange={props.maximumFieldOnChangeHandler}/>
                     </div>
