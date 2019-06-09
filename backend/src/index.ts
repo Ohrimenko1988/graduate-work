@@ -8,7 +8,6 @@ const app = express();
 const port = 8080;
 
 const operatorsRegistry = new OperatorsRegistry();
-const joinUp: JoinUp = new JoinUp();
 let hotToursResult: ITour[];
 
 app.get("/", (req, res) => {
@@ -52,23 +51,5 @@ app.listen(port, async () => {
     // tslint:disable-next-line:no-console
     console.log(`server started at http://localhost:${port}`);
 
-    // hotToursResult = await operatorsRegistry.getHotTours();
-    // console.log(hotToursResult);
-
-    // const searchParams: ISearchParams = {
-    //     accomodation: ["UAI", "AI", "FB", "BB", "RO"],
-    //     adultsCapacity: 2,
-    //     childrenCapacity: 0,
-    //     country: "Єгипет",
-    //     dateOfDeparture: "23.08.2019",
-    //     dateOfArrival: "30.08.2019",
-    //     durationOfStay: 6,
-    //     placeOfDeparture: "Київ",
-    //     resorts: ["Хургада", "Шарм ель Шейх"],
-    //     stars: ["5"]
-    // };
-
-    // console.log("\n\n\n========\n\n\n");
-    // console.log(await operatorsRegistry.searchTours(searchParams));
-    // console.log("\n\n\n========\n\n\n");
+    hotToursResult = await operatorsRegistry.getHotTours();
 });

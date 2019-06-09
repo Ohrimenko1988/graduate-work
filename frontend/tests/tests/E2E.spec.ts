@@ -16,5 +16,3 @@ suite("E2E test", async () => {
         await driverUtil.getDriver().quit();
     })
 })
-
-

@@ -31,5 +31,4 @@ export class DriverUtil{
         throw new Error('Fail of visibility waiting');
     }
 
-
 }
