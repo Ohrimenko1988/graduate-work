@@ -24,7 +24,7 @@ class ChildrenCapacity extends Component<any, any> {
         return (
             <div className='children-capacity'>
                 <SelectList
-                    label='Select children'
+                    label='Кількість дітей'
                     name='childrenCapacity'
                     items={this.childrenCapacityItems}
                     selectionHandler={this.props.selectionHandler}

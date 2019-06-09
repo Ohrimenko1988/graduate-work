@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, CSSProperties } from 'react'
 import Checkbox, { CheckboxProps } from '../common/Checkbox';
 
 export interface AccomodationProps {
@@ -25,10 +25,17 @@ export default class Accomodation extends Component<AccomodationProps, any> {
         })
     }
 
+    private readonly cssProperties: CSSProperties = {
+        margin: "2px",
+        padding: "2px",
+        borderBottomStyle: "double",
+        borderColor: "rebeccapurple"
+    }
+
     render() {
         return (
             <div className={this.props.className}>
-                <div className="accom-label">Select Accomodation type</div>
+                <div className="accom-label" style={this.cssProperties}>Тип проживання</div>
                 <div>
                     {this.renderAccomodations()}
                 </div>

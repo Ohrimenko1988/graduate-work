@@ -18,7 +18,7 @@ export default class Stars extends Component<StarsProps, any> {
             <div className={this.props.className}>
                 <SelectList
                     items={Stars.STARS}
-                    label="Select hotel category"
+                    label="Категорія готелю"
                     name="categories"
                     selectionHandler={this.props.onChangeHandler}
                 />

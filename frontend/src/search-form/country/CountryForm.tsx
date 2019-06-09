@@ -36,7 +36,7 @@ class CountryForm extends Component<any, any> {
             <div className={this.props.className}>
                 <div className='countries'>
                     <SelectList
-                        label='Select country'
+                        label='Оберіть країну'
                         name='countries'
                         items={CountryForm.COUNTRIES}
                         selectionHandler={this.props.selectCountryHandler}

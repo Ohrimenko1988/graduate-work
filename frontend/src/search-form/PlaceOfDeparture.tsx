@@ -11,7 +11,7 @@ class PlaceOfDeparture extends Component<any, any> {
         return (
             <div className={this.props.className}>
                 <SelectList
-                    label='Select place of departure'
+                    label='Місто відправлення'
                     name='placeOfDeparture'
                     items={PlaceOfDeparture.DEPARTURE_PLACES}
                     selectionHandler={this.props.departurePlaceHandler}

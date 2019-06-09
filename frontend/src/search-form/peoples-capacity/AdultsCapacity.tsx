@@ -24,7 +24,7 @@ class AdultsCapacity extends Component<any, any> {
         return (
             <div className='adults-capacity'>
                 <SelectList
-                    label='Select adults'
+                    label='Кількість дорослих'
                     name='adultsCapacity'
                     items={this.adultsCapacityItems}
                     selectionHandler={this.props.selectionHandler}

@@ -241,7 +241,7 @@ class SearchForm extends Component<any, ISearcFormState> {
                     />
                     <div className='calendars search-form-item'>
                         <div className="departure-calendar calendar-item">
-                            <div className="departure-label label">Select departure date</div>
+                            <div className="departure-label label">Дата відправлення</div>
                             <DateOfDeparture
                                 value={this.state.dateOfDeparture}
                                 dateHandler={this.departureDateHandler}
@@ -249,7 +249,7 @@ class SearchForm extends Component<any, ISearcFormState> {
                             />
                         </div>
                         <div className="arrival-calendar calendar-item">
-                            <div className="arrival-label label">Select arrival date</div>
+                            <div className="arrival-label label">Дата повернення</div>
                             <DateOfDeparture
                                 value={this.state.dateOfArrival}
                                 dateHandler={this.arrivalDateHandler}
