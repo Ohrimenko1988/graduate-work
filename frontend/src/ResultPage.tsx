@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import TourListItem, { TourListItemProps } from './TourListItem';
-import Button from './common/Button';
 import SearchForm from './search-form/SearchForm';
 import ToursFilter from './filter/ToursFilter';
 import { connect } from 'react-redux';
-import { URL } from 'url';
 import { ISearchParams } from './common/interfaces/ISearchParams';
 import axios from "axios";
 import { ParamsToQueriesConverter } from './ParamsToQueriesConverter';
@@ -26,31 +24,6 @@ class ResultPage extends Component<any, ResultPageState> {
 
     }
 
-    generateItemsList(): TourListItemProps[] {
-        let result: TourListItemProps[] = new Array()
-
-        const tourListItemProps: TourListItemProps = {
-            tourLink: "",
-            imageSource: 'https://s-ec.bstatic.com/xdata/images/hotel/max500/109664921.jpg?k=6ab9cf7ddbb132caf4f206a03c6226f9f491d668722b0376db6bd42e91e3d323&o=',
-            title: 'Отель Anthea Hotel Apartments Class "A"',
-            country: 'Кипр',
-            resort: '(Айя-Напа)',
-            typeOfAccommodation: 'SC',
-            duration: '5',
-            departureDate: '11.06.2019',
-            arrivalDate: 'Arrival Date',
-            adultsCapacity: 1,
-            childrenCapacity: 0,
-            price: '6 053 UAH'
-        }
-
-        for (let i = 0; i < 5; i++) {
-            result.push(tourListItemProps)
-        }
-
-        return result;
-    }
-
     componentWillMount() {
         const queriesParams = new URLSearchParams(window.location.search)
         const searchParams: ISearchParams = this.getSearchParamsFromQueries(queriesParams);
@@ -59,24 +32,12 @@ class ResultPage extends Component<any, ResultPageState> {
         const requestUrlWithQueries: string = ResultPage.SEARCH_TOUR_REQUEST_URL + ParamsToQueriesConverter.parse(searchParams);
         console.log("Request URL with queries \n", requestUrlWithQueries);
 
-        // axios.get(requestUrlWithQueries).then(resp => {
-        //     console.log("Responce data \n", resp.data);
-        //     this.setState({
-        //         tours: resp.data
-        //     })
-        // })
-
-        this.setState({
-            tours: this.generateItemsList()
+        axios.get(requestUrlWithQueries).then(resp => {
+            console.log("Responce data \n", resp.data);
+            this.setState({
+                tours: resp.data
+            })
         })
-
-        // axios.get("http://localhost:8080/search").then(resp => {
-        //     console.log("Responce data \n", resp.data);
-        //     this.setState({
-        //         tours: resp.data
-        //     })
-        // })
-
     }
 
     private getSearchParam(queriesParams: URLSearchParams, param: string): string {
