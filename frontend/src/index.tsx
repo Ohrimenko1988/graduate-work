@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import MainPage from './MainPage';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore, Reducer, applyMiddleware } from 'redux';
@@ -57,7 +57,7 @@ const testStore = createStore(playlist, applyMiddleware(thunk));
 ReactDOM.render(
     <Provider store={testStore} >
         <Router>
-            <Route exact path="/" component={App} />
+            <Route exact path="/" component={MainPage} />
             <Route exact path="/results" component={ResultPage} />
         </Router>
     </Provider>,

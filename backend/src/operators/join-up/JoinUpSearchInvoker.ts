@@ -31,11 +31,12 @@ export class JoinUpSearchInvoker {
     }
 
     public search(params: ISearchParams): Promise<ITour[]> {
+        const headerOpt = { headers: { "x-requested-with": "http://localhost:8080" } };
         const requestUrl: string = this.createRequestUrlWithQueries(params);
 
         console.log(requestUrl);
 
-        return axios.get(requestUrl)
+        return axios.get(requestUrl, headerOpt)
             .then((resp) => {
                 const htmlPage: string = `<!DOCTYPE html><head></head><body>${"" + resp.data}</body></html>`;
                 const respDocument: Document = new JSDOM(htmlPage).window.document;
@@ -49,7 +50,7 @@ export class JoinUpSearchInvoker {
     public createRequestUrlWithQueries(params: ISearchParams): string {
         const parsedOptions: IBindedParams = this.parseInputOptions(params);
 
-        return `${AppConstants.JOIN_UP_SEARCH_URL}?` +
+        return `https://cors-anywhere.herokuapp.com/${AppConstants.JOIN_UP_SEARCH_URL}?` +
             `ACTION=SearchTour_PRICES&TOWNFROMINC=18&` +
             `ADULT=${params.adultsCapacity}&` +
             `CHILD=${params.childrenCapacity}&` +
@@ -76,7 +77,7 @@ export class JoinUpSearchInvoker {
             `FILTER=1&` +
             `CAPTCHA=&` +
             `language=ru&` +
-            `_=1557333543829`;
+            `_=1559234741044`;
     }
 
     private parseInputOptions(params: ISearchParams): IBindedParams {

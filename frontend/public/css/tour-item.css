@@ -26,6 +26,16 @@
 .tour-list-item .description{
     display: flex;
     flex-direction: row;
+    border-style: double;
+    margin: 1px;
+}
+
+.tour-list-item .description .descriptionText {
+    font-weight: bold;
+    font-style: italic;
+    /* color: darkred; */
+    color: rebeccapurple;
+    text-decoration: underline;
 }
 
 .tour-list-item .details{
@@ -33,6 +43,24 @@
     padding: 5px;
 }
 
+.tour-list-item .details div{
+    margin: 1px;
+    padding: 2px;
+}
+
+.tour-list-item .details.right{
+    margin: 5px;
+    padding: 5px;
+    justify-content: end;
+}
+
+.tour-list-item .details.right div{
+    text-align: right;
+}
+
 .description{
     justify-content: space-between;
 }
+
+
+

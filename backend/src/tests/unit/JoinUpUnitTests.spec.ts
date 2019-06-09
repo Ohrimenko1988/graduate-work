@@ -56,7 +56,7 @@ suite("JoinUp unit tests", async () => {
             "&NIGHTS_FROM=6&NIGHTS_TILL=6&PACKET=0&PRICE_MIN=&PRICE_MAX=&CURRENCY=4&CURRENCY_CODE=UAH" +
             "&PER_PAGE=0&TOWNTO=[16,1316,1314,1317,1326,1315,1313,1318,17,1360,1347,1843,2380,1841,1844,1845,1846,1850,1840,1839,1849]" +
             "&TOWNTO_ANY=0&STARS=[10004]&STARS_ANY=0&HOTELS=[]&HOTELS_ANY=1&MEALS=[10023,10011,10010,10001,10020]" +
-            "&FREIGHT=0&FILTER=1&CAPTCHA=&language=ru&_=1557333543829";
+            "&FREIGHT=0&FILTER=1&CAPTCHA=&language=ru&_=1559234741044";
 
         const requestUrl: string = new JoinUpSearchInvoker().createRequestUrlWithQueries(searchParams);
         expect(expectedRequestUrl).to.be.equal(requestUrl);
