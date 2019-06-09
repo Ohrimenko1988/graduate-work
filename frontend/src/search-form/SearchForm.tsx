@@ -60,10 +60,6 @@ class SearchForm extends Component<any, ISearcFormState> {
         this.hotelCategoriesHandler = this.hotelCategoriesHandler.bind(this);
     }
 
-    test() {
-        let date: Date = new Date();
-    }
-
     onSubmitHandler(event: any) {
         event.preventDefault()
         const difInMilis: number = this.state.dateOfArrival.valueOf() - this.state.dateOfDeparture.valueOf();
@@ -82,10 +78,6 @@ class SearchForm extends Component<any, ISearcFormState> {
             stars: this.state.stars,
         }
 
-        console.log(ParamsToQueriesConverter.parse(params));
-        console.log(DateParser.parse(this.state.dateOfDeparture));
-
-
         if (this.state.country === 'none') {
             window.alert("Заповніть, будь-ласка, всі поля.");
             return;
@@ -102,7 +94,7 @@ class SearchForm extends Component<any, ISearcFormState> {
         }
 
         if (this.state.stars.length === 0) {
-            window.alert("Заповніть, будь-ласка, всі поля.");            
+            window.alert("Заповніть, будь-ласка, всі поля.");
             return;
         }
 
@@ -234,6 +226,7 @@ class SearchForm extends Component<any, ISearcFormState> {
                         childrenCapacityHandler={this.childrenCapacityHandler}
                         className='peoples-capacity search-form-item'
                     />
+
                     <div className='calendars search-form-item'>
                         <div className="departure-calendar calendar-item">
                             <div className="departure-label label">Дата відправлення</div>

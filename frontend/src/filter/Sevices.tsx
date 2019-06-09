@@ -44,7 +44,4 @@ const Services: React.FC<ServicesProps> = (props: ServicesProps) => {
     )
 }
 
-
-
-
 export default Services

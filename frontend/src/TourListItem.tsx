@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router';
 
 export interface TourListItemProps {
     tourLink: string;
@@ -37,6 +36,7 @@ export default function TourListItem(props: TourListItemProps): JSX.Element {
                             <div className='descriptionText'>Курорт</div>
                             <div className='resort tour-list-item-part'>{props.resort}</div>
                         </div>
+
                         <div className='details right'>
                             <div className='descriptionText'>Ціна</div>
                             <div className='price tour-list-item-part'>{props.price}</div>

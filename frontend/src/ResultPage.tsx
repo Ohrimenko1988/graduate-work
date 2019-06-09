@@ -7,8 +7,6 @@ import { ISearchParams } from './common/interfaces/ISearchParams';
 import axios from "axios";
 import { ParamsToQueriesConverter } from './ParamsToQueriesConverter';
 import { AppConstants } from './AppConstants';
-import { ITour } from './common/interfaces/ITour';
-import { PriceRangeProps } from './filter/PriceRange';
 
 export interface ResultPageState {
     tours: TourListItemProps[];
@@ -167,19 +165,14 @@ class ResultPage extends Component<any, ResultPageState> {
     componentWillMount() {
         const queriesParams = new URLSearchParams(window.location.search)
         const searchParams: ISearchParams = this.getSearchParamsFromQueries(queriesParams);
-        console.log("Search params \n", searchParams);
-
         const requestUrlWithQueries: string = ResultPage.SEARCH_TOUR_REQUEST_URL + ParamsToQueriesConverter.parse(searchParams);
-        console.log("Request URL with queries \n", requestUrlWithQueries);
 
         axios.get(requestUrlWithQueries).then(resp => {
-            console.log("Responce data \n", resp.data);
-            
             this.setState({
                 tours: resp.data
             });
 
-            if(this.state.tours.length === 0){
+            if (this.state.tours.length === 0) {
                 window.alert("На жаль за заданими параметрами пошуку нічого не знайдено, спробуйте змінити параметри та спробуйте знову");
             }
         })
@@ -250,4 +243,3 @@ export default connect(
     }),
     dispatch => ({})
 )(ResultPage);
-

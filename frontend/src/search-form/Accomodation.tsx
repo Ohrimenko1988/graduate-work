@@ -39,7 +39,6 @@ export default class Accomodation extends Component<AccomodationProps, any> {
                 <div>
                     {this.renderAccomodations()}
                 </div>
-
             </div>
         )
     }

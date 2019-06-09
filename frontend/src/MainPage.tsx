@@ -26,11 +26,7 @@ class MainPage extends React.Component<any, MainPageState> {
   componentWillMount() {
     axios.get(MainPage.HOT_TOURS_REQUEST_URL).then((resp: any) => {
       let recivedTours: TourListItemProps[] = new Array();
-      console.log("Response of hot tours request \n", resp);
-
       const hotTours: ITour[] = resp.data
-      console.log("Received 'ITour' list \n", hotTours);
-
 
       hotTours.map((tour: ITour) => {
         let itemProps: TourListItemProps = {
@@ -50,8 +46,6 @@ class MainPage extends React.Component<any, MainPageState> {
 
         recivedTours.push(itemProps)
       })
-
-      console.log("List of 'TourListItemProps' \n", recivedTours);
 
       this.setState({
         hotTours: recivedTours

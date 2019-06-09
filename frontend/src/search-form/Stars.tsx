@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Checkbox, { CheckboxProps } from '../common/Checkbox';
 import SelectList, { SelectListProps } from '../common/SelectList';
 
 export interface StarsProps {

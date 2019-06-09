@@ -5,7 +5,6 @@ import SpainResorts from './resort/SpainResorts';
 import SelectList from '../../common/SelectList';
 
 class CountryForm extends Component<any, any> {
-    private enabledResorts: Set<string> = new Set()
     private static readonly COUNTRIES: Array<string> = ['----', 'Туреччина', 'Єгипет', 'Іспанія']
 
     constructor(props: any) {

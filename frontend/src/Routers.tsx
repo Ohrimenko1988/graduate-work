@@ -4,19 +4,15 @@ import MainPage from './MainPage';
 import ResultPage from './ResultPage';
 
 class Routers extends Component<any, any> {
-    constructor (props:any) {
+    constructor(props: any) {
         super(props);
     }
-    
 
-    
-
-    render () {
+    render() {
         return (
-
             <Router>
-                <Route exact path="/" component={MainPage}/>
-                <Route exact path="/results" component={ResultPage}/>
+                <Route exact path="/" component={MainPage} />
+                <Route exact path="/results" component={ResultPage} />
             </Router>
         )
     }
