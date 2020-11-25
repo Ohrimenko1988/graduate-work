@@ -1,0 +1,21 @@
+name: PR
+# Trigger the workflow on push
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        project: ['backend', 'frontend']
+
+    steps:
+    - name: Checkout che-dashboard-next source code
+      uses: actions/checkout@v2
+    - name: Build project ${{ matrix.project }}
+      run: cd ${{ matrix.project }} && npm install && tsc
