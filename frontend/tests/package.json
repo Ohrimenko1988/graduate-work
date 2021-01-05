@@ -12,7 +12,7 @@
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
     "@types/selenium-webdriver": "^4.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "chai": "^4.2.0",
     "chromedriver": "^73.0.0",
     "mocha": "^6.1.4",
